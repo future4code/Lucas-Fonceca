@@ -135,14 +135,14 @@
 //     return divisao;
 // }
 
-// const numero1 = Number(prompt('Digite um número'));
-// const numero2 = Number(prompt('Digite outro número'));
+// const digitarNumero1 = Number(prompt('Digite um número'));
+// const digitarNumero2 = Number(prompt('Digite outro número'));
 
-// console.log(`Números inseridos: ${numero1} e ${numero2}
-// Soma: ${somarNumeros(numero1, numero2)}
-// Diferença: ${subtrairNumeros(numero1, numero2)}
-// Multiplicação: ${multiplicarNumeros(numero1, numero2)}
-// Divisão: ${dividirNumeros(numero1, numero2)}`);
+// console.log(`Números inseridos: ${digitarNumero1} e ${digitarNumero2}
+// Soma: ${somarNumeros(digitarNumero1, digitarNumero2)}
+// Diferença: ${subtrairNumeros(digitarNumero1, digitaNumero2)}
+// Multiplicação: ${multiplicarNumeros(digitarNumero1, digitarNumero2)}
+// Divisão: ${dividirNumeros(digitarNumero1, digitarNumero2)}`);
 
 
 // /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DESAFIOS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
