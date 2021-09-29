@@ -56,6 +56,8 @@ Na quarta reptição (4+1), imprime "****"".
 */
 
 // ############# EXERCÍCIO 1 #############
+
+
 let bichinhosUsuario = Number(prompt(`Quantos bichinhos de estimação você tem? (responda em números)`));
 let arrayDeBichinhos = [];
 if (bichinhosUsuario === 0) {
@@ -113,13 +115,17 @@ const imprimeArrayNumerosPares = (numeros) => {
 console.log(imprimeArrayNumerosPares(arrayOriginal))
 
 // 2.d
+
 const imprimeMensagem = (numeros) => {
+  let novoArray = [];
   for (let indice = 0; indice < numeros.length; indice++) {
-    console.log(`O elemento do índex ${indice} é ${numeros[indice]}`);
+    novoArray.push(`O elemento do índex ${indice} é ${numeros[indice]}`);
   }
+  return novoArray;
 }
 
-imprimeMensagem(arrayOriginal);
+const mensagem = imprimeMensagem(arrayOriginal);
+console.log(mensagem);
 // 2.e
 
 
@@ -151,12 +157,12 @@ console.log(`O menor número do array é ${encontraValorMinimo(arrayOriginal)}`)
 
 
 /*
-###########################################################
-############# EXERCÍCIOS DE ESCRITA DE CÓDIGO #############
-###########################################################
+##############################################
+############# EXERCÍCIOS DESAFIO #############
+##############################################
 */
 
-// ############# EXERCÍCIO 2 #############
+// ############# EXERCÍCIO 1 #############
 
 const numeroJogadorUm = Number(prompt("Primeiro Jogador: digite um número"));
   console.log ("bora jogar");
@@ -205,3 +211,4 @@ for (let contador = 1; numeroJogador !== numeroSorteado; contador++) {
         console.log(`Número de tentativas: ${contador}`)
       }
 }
+
