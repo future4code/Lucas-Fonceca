@@ -1,4 +1,4 @@
-/* ~~~~~~~~~~~~~ QUINZENA 2 - AULA 10 - FUNÇÃO DE ARRAYS - EXERCÍCIOS ~~~~~~~~~~~~~*/ 
+/* ~~~~~~~~~~~~~ QUINZENA 2 - AULA 10 - MÉTODOS DE ARRAYS - EXERCÍCIOS ~~~~~~~~~~~~~*/ 
 
 /* 
 #################################################################
@@ -40,13 +40,13 @@ const pets = [
     { nome: "Quentinho", raca: "Salsicha"},
     { nome: "Fluffy", raca: "Poodle"},
     { nome: "Caramelo", raca: "Vira-lata"},
- ]
+ ];
 
 // A)
-/*
+
 const imprimeNomeDoguinhos = pets.map((item) => {
     return item.nome;
-})
+});
 
 console.log(imprimeNomeDoguinhos);
 
@@ -54,60 +54,76 @@ console.log(imprimeNomeDoguinhos);
 
  const filtraSalsichinha = pets.filter((item) => {
     return item.raca === "Salsicha";
- }
- )
+ });
 
- console.log (filtraSalsichinha);
+ console.log(filtraSalsichinha);
+
  // C)
-
 
 const descontoPoodle = pets.filter((item) => {
      return item.raca === "Poodle";
- })
+ });
 
 const nomesPoodle = descontoPoodle.map((item) => {
-    
     return `Você ganhou um cupom de desconto de 10% para tosar o/a ${item.nome}`;
-})
-console.log (nomesPoodle); // como separar os nomes?
-*/
+});
+
+console.log(nomesPoodle); 
+
 
 /*
  EXERCÍO 2
-A)
 */
 
-// const produtos = [
-//     { nome: "Alface Lavada", categoria: "Hortifruti", preco: 2.5 },
-//     { nome: "Guaraná 2l", categoria: "Bebidas", preco: 7.8 },
-//     { nome: "Veja Multiuso", categoria: "Limpeza", preco: 12.6 },
-//     { nome: "Dúzia de Banana", categoria: "Hortifruti", preco: 5.7 },
-//     { nome: "Leite", categoria: "Bebidas", preco: 2.99 },
-//     { nome: "Cândida", categoria: "Limpeza", preco: 3.30 },
-//     { nome: "Detergente Ypê", categoria: "Limpeza", preco: 2.2 },
-//     { nome: "Vinho Tinto", categoria: "Bebidas", preco: 55 },
-//     { nome: "Berinjela kg", categoria: "Hortifruti", preco: 8.99 },
-//     { nome: "Sabão em Pó Ypê", categoria: "Limpeza", preco: 10.80 }
-//  ]
-// /*
-//  const nomeDosProdutos = produtos.map((item) => {
-//      return item.nome;
-//  }
-//  )
+const produtos = [
+    { nome: "Alface Lavada", categoria: "Hortifruti", preco: 2.5 },
+    { nome: "Guaraná 2l", categoria: "Bebidas", preco: 7.8 },
+    { nome: "Veja Multiuso", categoria: "Limpeza", preco: 12.6 },
+    { nome: "Dúzia de Banana", categoria: "Hortifruti", preco: 5.7 },
+    { nome: "Leite", categoria: "Bebidas", preco: 2.99 },
+    { nome: "Cândida", categoria: "Limpeza", preco: 3.30 },
+    { nome: "Detergente Ypê", categoria: "Limpeza", preco: 2.2 },
+    { nome: "Vinho Tinto", categoria: "Bebidas", preco: 55 },
+    { nome: "Berinjela kg", categoria: "Hortifruti", preco: 8.99 },
+    { nome: "Sabão em Pó Ypê", categoria: "Limpeza", preco: 10.80 }
+ ];
 
-//  console.log (nomeDosProdutos);
-//  */
+// A)
 
-//  // B)
+const nomeDosProdutos = produtos.map((item) => {
+     return item.nome;
+ });
 
-//  const nomeDosProdutos = produtos.map((item) => {
-//     return item.nome;
-//  }
-//  )
- 
-//  let precoDosProdutos = produtos.map((item) => {
-//     return item.preco;
-//  }
-//  )
+ console.log(nomeDosProdutos);
 
-//  const precoComDesconto = precoDosProdutos * 0.05;
+
+ // B)
+
+const produtosComDesconto = produtos.map((item) => {
+    return {nome: item.nome, preco: (item.preco * 0.95).toFixed(2)}
+ });
+
+console.log(produtosComDesconto);
+
+// C)
+
+const bebidas = produtos.filter((item) => {
+    return item.categoria === "Bebidas";
+});
+console.log(bebidas);
+
+// D)
+
+const produtosYpe = produtos.filter((item) => {
+    return item.nome.includes("Ypê");
+});
+
+console.log(produtosYpe);
+
+// E)
+
+const comprarProdutosYpe = produtosYpe.map((item) => {
+    return `Compre ${item.nome} por R$${item.preco}`
+});
+
+console.log(comprarProdutosYpe);
