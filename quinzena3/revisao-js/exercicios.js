@@ -9,18 +9,24 @@ function inverteArray(array) {
 
 // EXERCÍCIO 02
 function retornaNumerosParesElevadosADois(array) {
-  let retornaNumerosParesElevadosADois = [];
+  let numerosParesElevadosADois = [];
   for (let i = 0; i <= array.length -1; i ++){
     if (array[i] % 2 === 0){
-      retornaNumerosParesElevadosADois.push(array[i]**2);
+      numerosParesElevadosADois.push(array[i]**2);
     }
   }
-  return retornaNumerosParesElevadosADois;
+  return numerosParesElevadosADois;
 }
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
-  
+  let numerosPares = [];
+  for (let i = 0; i <= array.length -1; i++){
+    if (array[i] % 2 === 0){
+      numerosPares.push(array[i]);
+    }
+  }
+  return numerosPares;
 }
 
 // EXERCÍCIO 04
