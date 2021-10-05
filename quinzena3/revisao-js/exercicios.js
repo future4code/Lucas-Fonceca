@@ -27,7 +27,13 @@ function retornaNumerosPares(array) {
 
 // EXERCÍCIO 04
 function retornaMaiorNumero(array) {
-
+  let maiorNumero = array[0];
+  for (let i = 1; i < array.length; i++){
+    if (array[i] > maiorNumero){
+      maiorNumero = array[i];
+    }
+  }
+  return maiorNumero;
 }
 
 // EXERCÍCIO 05
@@ -160,27 +166,3 @@ function ordenaPorData(consultasData) {
 function calculaSaldo(contas) {
 
 }
-
-
-
-
-
-
-
-for(let i = 0; i < palavras.length; ++i){
-  console.log("A palavra na posição " + i + " é:" + palavras[i]);
-}
-
-for(let palavra of palavras){
-  console.log("A palavra é:" + palavra);
-}
-
-palavras.map((palavra) =>{
-  palavra + '.'
-});
-
-
-
-
-
-
