@@ -10,13 +10,17 @@ function inverteArray(array) {
 // EXERCÍCIO 02
 function retornaNumerosParesElevadosADois(array) {
   let numerosParesElevadosADois = [];
-  for (let i = 0; i <= array.length -1; i ++){
+  for (let i = 0; i < array.length; i++){
     if (array[i] % 2 === 0){
       numerosParesElevadosADois.push(array[i]**2);
     }
   }
   return numerosParesElevadosADois;
+
+
 }
+
+
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
@@ -41,7 +45,26 @@ function retornaQuantidadeElementos(array) {
 
 // EXERCÍCIO 06
 function retornaExpressoesBooleanas() {
+  const booleano1 = true;
+  const booleano2 = false;
+  const booleano3 = !booleano2;
+  const booleano4 = !booleano3;
+  
+  let respostas = [];
 
+  let expressaoUm = booleano1 && booleano2 && !booleano4;
+  let expressaoDois = (booleano1 && booleano2) || !booleano3;
+  let expressaoTres = (booleano2 || booleano3) && (booleano4 || booleano1);
+  let expressaoQuatro = !(booleano2 && booleano3) || !(booleano1 && booleano3);
+  let expressaoCinco = !(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3);
+
+  respostas.push(expressaoUm);
+  respostas.push(expressaoDois);
+  respostas.push(expressaoTres);
+  respostas.push(expressaoQuatro);
+  respostas.push(expressaoCinco);
+
+  return respostas;
 }
 
 // EXERCÍCIO 07
@@ -145,3 +168,39 @@ function ordenaPorData(consultasData) {
 function calculaSaldo(contas) {
 
 }
+
+
+
+
+
+
+
+for(let i = 0; i < palavras.length; ++i){
+  console.log("A palavra na posição " + i + " é:" + palavras[i]);
+}
+
+for(let palavra of palavras){
+  console.log("A palavra é:" + palavra);
+}
+
+palavras.map((palavra) =>{
+  palavra + '.'
+});
+
+
+
+
+
+
+
+let palavras = ['arroz', 'aboba', 'bolinha', 'quadrado'];
+
+for(let i = 0; i < palavras.length; ++i){
+  palavras[i] += '.';
+}
+
+for(let palavra of palavras){
+  palavra += '.';
+}
+
+
