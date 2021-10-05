@@ -9,28 +9,20 @@ function inverteArray(array) {
 
 // EXERCÍCIO 02
 function retornaNumerosParesElevadosADois(array) {
-  let numerosParesElevadosADois = [];
-  for (let i = 0; i < array.length; i++){
-    if (array[i] % 2 === 0){
-      numerosParesElevadosADois.push(array[i]**2);
-    }
-  }
-  return numerosParesElevadosADois;
-
-
+  let numerosPares = array.filter((item) => {
+    return (item % 2) === 0
+  });
+  
+  return numerosPares.map((item) => {
+    return item**2
+  });
 }
-
-
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
-  let numerosPares = [];
-  for (let i = 0; i <= array.length -1; i++){
-    if (array[i] % 2 === 0){
-      numerosPares.push(array[i]);
-    }
-  }
-  return numerosPares;
+  return array.filter((item) => {
+    (item % 2) === 0
+  });  
 }
 
 // EXERCÍCIO 04
@@ -190,17 +182,5 @@ palavras.map((palavra) =>{
 
 
 
-
-
-
-let palavras = ['arroz', 'aboba', 'bolinha', 'quadrado'];
-
-for(let i = 0; i < palavras.length; ++i){
-  palavras[i] += '.';
-}
-
-for(let palavra of palavras){
-  palavra += '.';
-}
 
 
