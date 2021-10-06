@@ -84,7 +84,23 @@ function checaTriangulo(a, b, c) {
 
 // EXERCÍCIO 09
 function comparaDoisNumeros(num1, num2) {
+  const numeros = {
+    maiorNumero: 0,
+    maiorDivisivelPorMenor: false,
+    diferenca: 0
+  }
+  if (num1 > num2) {
+    numeros.maiorNumero = num1;
+    menorNumero = num2;
+  } else {
+    numeros.maiorNumero = num2;
+    menorNumero = num1;
+  }
 
+  numeros.diferenca = numeros.maiorNumero - menorNumero;
+  numeros.maiorDivisivelPorMenor = numeros.maiorNumero % menorNumero === 0;
+
+  return numeros
 }
 
 // EXERCÍCIO 10
