@@ -72,19 +72,19 @@ function retornaNNumerosPares(n) {
 
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
-  // return 'Escaleno'
-  // return 'Equilátero'
-  // return 'Isósceles'
+  if (a === b && a === c) {
+    return 'Equilátero'
+  } else if (((a === b) && (a !== c)) || ((a === c && a !== b)) || ((b === c && b !== a))) {
+    return 'Isósceles'
+  } else {
+    return 'Escaleno'
+  }
+
 }
 
 // EXERCÍCIO 09
 function comparaDoisNumeros(num1, num2) {
-  // Formato do objeto a ser retornado:
-  // {
-  //   maiorNumero: X,
-  //   maiorDivisivelPorMenor: Y,
-  //   diferenca: Z
-  // }
+
 }
 
 // EXERCÍCIO 10
@@ -104,7 +104,7 @@ function filmeFavorito() {
 
 // EXERCÍCIO 13
 function imprimeChamada() {
-  // "Venha assistir ao filme NOME_DO_FILME, de ANO, dirigido por DIRECAO e estrelado por ELENCO."
+
 }
 
 // EXERCÍCIO 14
