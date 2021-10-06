@@ -20,9 +20,10 @@ function retornaNumerosParesElevadosADois(array) {
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
-  return array.filter((item) => {
-    (item % 2) === 0
-  });  
+  let numerosPares = array.filter((item) => {
+    return (item % 2) === 0
+  });
+  return numerosPares
 }
 
 // EXERCÍCIO 04
@@ -128,10 +129,15 @@ function filmeFavorito() {
 
 // EXERCÍCIO 13
 function imprimeChamada() {
-  const chamadaFilmeFavorito ={
-    ...filmeFavoritoAstrodev
+
+  const filmeFavoritoAstrodev = {
+    nome: "O Diabo Veste Prada",
+    ano: 2006,
+    diretor: "David Frankel",
+    atores: ["Meryl Streep", " Anne Hathaway", " Emily Blunt", " Stanley Tucci"]
   }
-  return `Venha assistir ao filme ${chamadaFilmeFavorito.nome}, de ${chamadaFilmeFavorito.ano}, dirigido por ${chamadaFilmeFavorito.diretor} e estrelado por ${chamadaFilmeFavorito.atores}.`
+
+  return `Venha assistir ao filme ${filmeFavoritoAstrodev.nome}, de ${filmeFavoritoAstrodev.ano}, dirigido por ${filmeFavoritoAstrodev.diretor} e estrelado por ${filmeFavoritoAstrodev.atores}.`
 }
 
 // EXERCÍCIO 14
