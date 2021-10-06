@@ -128,7 +128,10 @@ function filmeFavorito() {
 
 // EXERCÍCIO 13
 function imprimeChamada() {
-
+  const chamadaFilmeFavorito ={
+    ...filmeFavoritoAstrodev
+  }
+  return `Venha assistir ao filme ${chamadaFilmeFavorito.nome}, de ${chamadaFilmeFavorito.ano}, dirigido por ${chamadaFilmeFavorito.diretor} e estrelado por ${chamadaFilmeFavorito.atores}.`
 }
 
 // EXERCÍCIO 14
