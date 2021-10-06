@@ -179,17 +179,30 @@ function menoresDe18(arrayDePessoas) {
 
 // EXERCÍCIO 17A
 function multiplicaArrayPor2(array) {
-
+  const numerosMultiplicadosPor2 = array.map((item) => {
+    return item*2;
+  })
+  return numerosMultiplicadosPor2;
 }
 
 // EXERCÍCIO 17B
 function multiplicaArrayPor2S(array) {
-
+  const numerosMultiplicadosPor2S = array.map((item) => {
+    return (item*2).toString();
+  })
+  return numerosMultiplicadosPor2S;
 }
 
 // EXERCÍCIO 17C
 function verificaParidade(array) {
-
+  const parOuImpar = array.map((item) => {
+    if(item%2===0){
+      return `${item} é par`
+    } else {
+      return `${item} é ímpar`
+    }
+  })
+  return parOuImpar;
 }
 
 // EXERCÍCIO 18A
