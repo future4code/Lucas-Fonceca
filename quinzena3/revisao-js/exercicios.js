@@ -106,7 +106,7 @@ function comparaDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
-
+  
 }
 
 // EXERCÍCIO 11
@@ -163,7 +163,10 @@ function anonimizaPessoa(pessoa) {
 
 // EXERCÍCIO 16A
 function maioresDe18(arrayDePessoas) {
-
+  let pessoasMaioresDe18 = arrayDePessoas.filter((item) => {
+    return item.idade >= 18
+  })
+  return pessoasMaioresDe18;
 }
 
 // EXERCÍCIO 16B
