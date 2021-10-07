@@ -68,7 +68,14 @@ function retornaExpressoesBooleanas() {
 
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
+  let novoArray = [];
 
+  for(let numero = 0; novoArray.length < n; numero++){
+    if (numero%2===0) {
+      novoArray.push(numero);
+    }
+  }
+  return novoArray;
 }
 
 // EXERCÍCIO 08
