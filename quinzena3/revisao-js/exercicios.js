@@ -118,7 +118,11 @@ function segundoMaiorEMenor(array) {
 
 // EXERCÍCIO 11
 function ordenaArray(array) {
-
+  array.sort(function(a,b) {
+    let diferenca = a - b
+    return diferenca
+  })
+  return array;
 }
 
 // EXERCÍCIO 12
