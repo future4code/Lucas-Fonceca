@@ -242,7 +242,16 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 19A
 function ordenaPorNome(consultasNome) {
-
+  for (let i = 0; i < consultasNome.length; i++) {
+    for (let j = 0; j < consultasNome.length - 1 - i; j++) {
+      if (consultasNome[j].nome > consultasNome[j + 1].nome) {
+        let swap = consultasNome[j];
+        consultasNome[j] = consultasNome[j + 1];
+        consultasNome[j + 1] = swap;
+      }
+    }
+  }
+  return consultasNome;
 }
 
 // EXERCÍCIO 19B
