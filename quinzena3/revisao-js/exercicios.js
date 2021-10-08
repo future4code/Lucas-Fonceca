@@ -113,23 +113,33 @@ function comparaDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
-  array.sort(function(a,b) {
-    let diferencaDoArray = a - b;
-    return diferencaDoArray;
-  })
-  let segundoMaior = array[1];
-  let segundoMenor = array[array.length-2];
-  let segundoMaiorEMenor = [(segundoMenor), (segundoMaior)]
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length - 1 - i; j++) {
+      if (array[j] > array[j +1]) {
+        let swap = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = swap;
+      }
+    }
+  }
+  let segundoMenor = array[1];
+  let segundoMaior = array[array.length-2];
+  let segundoMaiorEMenor = [(segundoMaior), (segundoMenor)]
 
   return segundoMaiorEMenor;
 }
 
 // EXERCÍCIO 11
 function ordenaArray(array) {
-  array.sort(function(a,b) {
-    let diferenca = a - b;
-    return diferenca;
-  })
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length - 1 - i; j++) {
+      if (array[j] > array[j +1]) {
+        let swap = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = swap;
+      }
+    }
+  }
   return array;
 }
 
