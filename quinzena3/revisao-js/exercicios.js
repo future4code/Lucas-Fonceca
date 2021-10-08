@@ -113,14 +113,22 @@ function comparaDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
-  
+  array.sort(function(a,b) {
+    let diferencaDoArray = a - b;
+    return diferencaDoArray;
+  })
+  let segundoMaior = array[1];
+  let segundoMenor = array[array.length-2];
+  let segundoMaiorEMenor = [(segundoMenor), (segundoMaior)]
+
+  return segundoMaiorEMenor;
 }
 
 // EXERCÍCIO 11
 function ordenaArray(array) {
   array.sort(function(a,b) {
-    let diferenca = a - b
-    return diferenca
+    let diferenca = a - b;
+    return diferenca;
   })
   return array;
 }
