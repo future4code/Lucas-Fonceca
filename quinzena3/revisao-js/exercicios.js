@@ -252,5 +252,10 @@ function ordenaPorData(consultasData) {
 
 // EXERCÍCIO 20
 function calculaSaldo(contas) {
-
+  for (let i = 0; i < contas.length; i++) {
+    for (let j = 0; j < contas[i].compras.length; j++) {
+      contas[i].saldoTotal -= contas[i].compras[j];
+    }
+  }
+  return contas;
 }
