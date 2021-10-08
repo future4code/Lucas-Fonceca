@@ -256,7 +256,23 @@ function ordenaPorNome(consultasNome) {
 
 // EXERCÍCIO 19B
 function ordenaPorData(consultasData) {
+  for (let i = 0; i < consultasData.length; i++) {
+    for (let j = 0; j < consultasData.length - 1 - i; j++) {
+      
+      let separaData1 = consultasData[j].dataDaConsulta.split("/");
+      let separaData2 = consultasData[j + 1].dataDaConsulta.split("/");
 
+      let data1 = new Date(+separaData1[2], separaData1[1] - 1, +separaData1[0]).getTime()
+      let data2 = new Date(+separaData2[2], separaData2[1] - 1, +separaData2[0]).getTime()
+      
+      if (data1 > data2) {
+        let swap = consultasData[j];
+        consultasData[j] = consultasData[j + 1];
+        consultasData[j + 1] = swap;
+      }
+    }
+  }
+  return consultasData;
 }
 
 // EXERCÍCIO 20
