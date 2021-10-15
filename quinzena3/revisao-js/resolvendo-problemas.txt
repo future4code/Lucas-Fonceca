@@ -1,0 +1,16 @@
+*Exercícios de fixação do conhecimento*
+
+1. Quais são os 7 passos fundamentais para a resolução de problemas e como eles podem nos ajudar a solucionar nossos desafios de programação?
+
+R.:
+1) De acordo com o vídeo, os 7 passos fundamentais para a resolução de problemas são, nessa ordem:
+- Ler o enunciado com atenção; 
+- Retirar informações relevantes para a construção do código, no enunciado;
+- Pensar em possíveis entradas e saídas de dados e informações;
+- Fazer um "pseudocódigo", de forma que a visualização do código fique mais "paupável" ou inteligível;
+- Criar a primeira versão do código;
+- Testar se o código funciona;
+- Por fim, refatorar o código afim de deixá-lo mais visualmente agradável, mais inteligível para outras pessoas e principalmente mais operacional.
+
+Esses passos são importantes para ajudar na dificuldade em criar um código. É comum, ao nos  depararmos como um problema não sabermos o que fazermos para iniciar, por isso que a leitura, a retirada de informações e o pseudocódigo estão presentes nas dicas. Entender o que o programa vai fazer é um passo importantíssimo para conseguirmos trabalhar com maior eficácia.
+Ao fim, já na escrita do código, muitas vezes, quando um código está funcionando, é comum pensarmos que está bom e avançarmos aos próximos desafios. No entanto, é interessante pensar também se não existe uma forma mais eficaz de chegar ao mesmo resultado, uma vez que um programa que funciona e que não foi refatorado pode exigir demais da máquina, sendo que um código que chegue ao mesmo fim pode ser muito mais operacional.
