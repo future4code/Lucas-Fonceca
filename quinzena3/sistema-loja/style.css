@@ -7,7 +7,7 @@ body {
     margin: 0px;
 }
 
-.cabecalho, .logo-loja, .menu-navegacao, .titulo-paginas, tr, footer  {
+.cabecalho, .logo-loja, .menu-navegacao, .titulo-paginas, footer, .valor, .coluna-ctrl-estoque  {
     text-align: center;
 }
 
@@ -29,7 +29,13 @@ body {
 }
 
 .item-menu {
-    padding-right: 50px;
+    padding-right: 20px;
+}
+
+.selecionado {
+    color: 	#8b7355;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 a {
@@ -53,14 +59,8 @@ a:hover {
     padding: 0px 40px 30px 40px;
 }
 
-#gatinho-com-gliter, .tabela-ctrl-estoque {
-    display: block;
-    margin-left: auto;
-    margin-right: auto
-}
-
-td {
-    width: 500px;
+.cabecalho-tabela {
+    padding: 0 25px
 }
 
 .em-falta {
@@ -83,7 +83,6 @@ td {
 
 input {
     width: 400px;
-    text-align: right;
 }
 
 #quantidade-disponivel {
@@ -95,14 +94,33 @@ input {
     width: 180px;
     height: 40px;
     margin-left: 50%;
-    background-color: #c1cdcd;
+    margin-top: 20px;
+    color: #8b7355;
+    background-color: #fbe4d3;
+    border: 1px solid;
 }
 
 #botao-adc:hover {
-    background-color: #f0ffff;
+    background-color: #fcede2;
 }
 
 .lista-equipe {
     margin-left: 100px;
+}
 
+.quantidade-vendida {
+    width: 40px;
+    text-align: right;
+}
+
+.tabela-vendas, .historico-vendas, .tabela-ctrl-estoque {
+    margin-left: 25%;
+}
+
+.coluna-tabela-vendas {
+    width: 260px
+}
+
+#data-venda {
+    width: fit-content;
 }

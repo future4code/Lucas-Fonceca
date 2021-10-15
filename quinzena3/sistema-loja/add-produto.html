@@ -23,7 +23,9 @@
         <nav class="menu-navegacao">
             <a href="index.html" class="item-menu">Página Inicial</a>
             <a href="ctrl-estoque.html" class="item-menu">Controle de Estoque</a>
-            <a href="add-produto.html" class="item-menu">Adicionar Produto</a>
+            <a href="venda.html" class="item-menu">Vendas</a>
+            <a href="add-produto.html" class="item-menu selecionado">Adicionar Produto</a>
+            <a href="historico-de-vendas.html" class="item-menu">Histórico de Vendas</a>
             <a href="funcionarios.html" class="">Funcionários</a>
         </nav>
     </header>
@@ -52,13 +54,13 @@
                 <tr>
                     <!-- Preencha as propriedades necessárias para os elementos abaixo -->
                     <th class="linha-form"><label>Quantidade disponível: </label></th>
-                    <th class="linha-form"><input type="number" id="quantidade-disponivel" name="quantidade"></th>
+                    <th class="linha-form"><input type="number" id="quantidade-disponivel" name="quantidade" min="0" placeholder="0"></th>
                 </tr>
     </table>
     <table>
-                <tr class="form-add">
+                <tr>
                     <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
-                    <th class="" ><button type="submit" id="botao-adc">Adicionar</button></th>
+                    <th><button type="submit" id="botao-adc">Adicionar</button></th>
                 </tr>
         </form>
     </table>
