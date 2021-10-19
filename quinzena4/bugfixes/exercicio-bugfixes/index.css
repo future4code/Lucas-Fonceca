@@ -21,20 +21,12 @@ input {
     width: 500px;
 }
 
-button:focus {
+/* button:focus {
     color: white;
-}
+} */
 
 img {
     width: 100px;
-}
-
-.lupa-busca {
-    width: 15px;
-}
-
-.imagem-tabela {
-    width: 30px;
 }
 
 div>p:first-child {
@@ -111,12 +103,20 @@ table {
     text-align: center;
 }
 
-td button {
+.botao-comprar {
     background-color: #fadf63;
     width: 150px;
     height: 30px;
     border-radius: 5px;
     color: black;
+}
+
+.botao-comprar:hover {
+    background-color: #f7cc11;
+}
+
+.botao-comprar:active {
+    color: #ffffff;
 }
 
 .container-do-search {
@@ -137,4 +137,13 @@ td button {
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+
+.lupa-busca {
+    width: 15px;
+}
+
+.imagem-tabela {
+    width: 30px;
 }
