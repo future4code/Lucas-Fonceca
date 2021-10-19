@@ -104,6 +104,9 @@ div:last-child {
 table {
     width: 60%;
     text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 80px;
 }
 
 .botao-comprar {
@@ -149,4 +152,9 @@ table {
 
 .imagem-tabela {
     width: 30px;
+}
+
+.tabela {
+    text-align: center;
+
 }
