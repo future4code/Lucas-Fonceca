@@ -29,6 +29,10 @@ img {
     width: 100px;
 }
 
+.lupa-busca {
+    width: 15px;
+}
+
 .imagem-tabela {
     width: 30px;
 }
@@ -37,9 +41,6 @@ div>p:first-child {
     display: inline;
 }
 
-div img {
-    background: black;
-}
 
 .botao-amarelo {
     background-color: #ffaf43;
