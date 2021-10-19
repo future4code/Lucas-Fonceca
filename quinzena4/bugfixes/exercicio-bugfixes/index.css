@@ -157,6 +157,15 @@ table {
     width: 15px;
 }
 
+.lupa-busca:hover {
+    width: 25px;
+    opacity: 0.5;
+}
+
+.lupa-busca:active {
+    width: 15px;
+}
+
 .imagem-tabela {
     width: 30px;
 }
