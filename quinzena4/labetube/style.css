@@ -35,6 +35,10 @@ header a:visited {
     color: 	#ffcc5c;
 }
 
+.videos {
+    margin-top: 50px;
+}
+
 ul {
     list-style: none;
     margin: 0;
