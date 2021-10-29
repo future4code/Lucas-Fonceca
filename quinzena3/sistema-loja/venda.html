@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;1,100;1,200&display=swap" rel="stylesheet">
+    <title>Vendas - Brincanimal</title>
+</head>
+<body>
+    <header>
+        <div class="cabecalho"> 
+            <h1 class="logo-loja"><img src="img/outline_pets_black_24dp.png"> brincanimal <img src="img/outline_pets_black_24dp.png"></h1>
+            <p class="slogan">O lugar que diverte seu pet.</p>
+        </div>
+        
+        <nav class="menu-navegacao">
+            <a href="index.html" class="item-menu">Página Inicial</a>
+            <a href="ctrl-estoque.html" class="item-menu">Controle de Estoque</a>
+            <a href="venda.html" class="item-menu selecionado">Vendas</a>
+            <a href="add-produto.html" class="item-menu">Adicionar Produto</a>
+            <a href="historico-de-vendas.html" class="item-menu">Histórico de Vendas</a>
+            <a href="funcionarios.html" class="">Funcionários</a>
+        </nav>
+    </header>
+    <main>
+        <h2 class="titulo-paginas ">Vendas</h2>
+
+        <table class="tabela-vendas">
+        <form action="">
+            <tr>
+                <td class="coluna-tabela-vendas"><label for="osso-de-borracha">Osso de borracha</label></th>
+                <td class="coluna-tabela-vendas"><input type="number" class="quantidade-vendida" name="osso-de-borracha" min="0" placeholder="0" placeholder="0"></th><br>
+            </tr>
+            
+            <tr>
+                <td class="coluna-tabela-vendas"><label for="bola-de-borracha">Bolinha de borracha</label></td>
+                <td class="coluna-tabela-vendas"><input type="number" class="quantidade-vendida" name="bola-de-borracha" min="0" placeholder="0"></td>
+            </tr>
+
+            <tr>
+                <td class="coluna-tabela-vendas"><label for="bicho-de-pelucia">Bichinho de pelúcia</label></td>
+                <td class="coluna-tabela-vendas"><input type="number" class="quantidade-vendida" name="bicho-de-pelucia"  min="0" placeholder="0"></td>
+            </tr>
+
+            <tr>
+                <td class="coluna-tabela-vendas"><label for="frango-de-borracha">Frango de borracha</label></td>
+                <td class="coluna-tabela-vendas"><input type="number" class="quantidade-vendida"  name="frango-de-borracha" min="0" placeholder="0"></td>
+            </tr>
+
+            <tr>
+                <td class="coluna-tabela-vendas"><label for="bola-com-sininho">Bola com sininho</label></td>
+                <td class="coluna-tabela-vendas"><input type="number" class="quantidade-vendida" name="bola-com-sininho" min="0" placeholder="0"></td>
+            </tr>
+
+            <tr>
+                <td class="coluna-tabela-vendas"><label for="caixa-de-papelao">Caixa de papelão estilizada</label></td>
+                <td class="coluna-tabela-vendas"><input type="number" class="quantidade-vendida" name="caixa-de-papelao" min="0" placeholder="0"></td>
+            </tr>
+
+            <tr>
+                <td class="coluna-tabela-vendas"><label for="novelo-la">Novelo de Lã</label></td>
+                <td class="coluna-tabela-vendas"><input type="number" class="quantidade-vendida" name="novelo-la" min="0" placeholder="0"></td>
+            </tr>
+
+            <tr>
+                <td class="coluna-tabela-pagamento"><label for="pagamento">Escolha a forma de pagamento:</label></td>
+                <td class="coluna-tabela-pagamento"><select name="forma-de-pagamento" id="forma-de-pagamento">
+                    <optgroup label="Cartão">
+                        <option value="debito">Cartão de Débito</option>
+                        <option value="credito">Cartão de Crédito</option>
+                    </optgroup>
+                    <optgroup label="Dinheiro">
+                        <option value="dinheiro">Dinheiro</option>
+                    </optgroup>
+                </select></td>
+            </tr>
+            <td><button type="submit" id="botao-adc">Finalizar Compra</button></td>
+        </form>
+    </table>
+    </main>
+    <footer>
+        <div>
+            <p>Siga-nos nas redes sociais!</p>
+
+            <div>
+                <img src="img/facebook.png"/>
+                <img src="img/instagram.png"/>
+                <img src="img/twitter.png"/>
+            </div>
+        </div>
+    </footer>
+</body>

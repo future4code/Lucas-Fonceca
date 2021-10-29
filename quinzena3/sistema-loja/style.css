@@ -1,0 +1,126 @@
+html {
+    font-family: 'Poppins', sans-serif;
+    
+}
+body {
+    background-color: ghostwhite;
+    margin: 0px;
+}
+
+.cabecalho, .logo-loja, .menu-navegacao, .titulo-paginas, footer, .valor, .coluna-ctrl-estoque  {
+    text-align: center;
+}
+
+.titulo, .logo-loja{
+    font-size: 35px;
+}
+
+.slogan {
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.menu-navegacao {
+    background-color: #ffefdb;
+    padding: 20px 150px;
+    width: fit-content;    
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.item-menu {
+    padding-right: 20px;
+}
+
+.selecionado {
+    color: 	#8b7355;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+    color: #483121
+}
+
+a:hover {
+    text-decoration: overline;
+    color: #795237;
+}
+
+.titulo-paginas {
+    margin-top: 10px;
+    padding: 30px 40px;
+}
+
+.texto-sobre {
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 0px 40px 30px 40px;
+}
+
+.cabecalho-tabela {
+    padding: 0 25px
+}
+
+.em-falta {
+    text-decoration: line-through;
+    color: red;
+}
+
+.em-falta:last-of-type {
+    text-decoration: none;
+}
+
+.tabela-adc-produto {
+    margin-left: 100px;
+}
+
+.linha-form {
+    text-align: left;
+    padding-right: 40px;
+}
+
+input {
+    width: 400px;
+}
+
+#quantidade-disponivel {
+    width: 40px;
+    text-align: right;
+}
+
+#botao-adc {
+    width: 180px;
+    height: 40px;
+    margin-left: 50%;
+    margin-top: 20px;
+    color: #8b7355;
+    background-color: #fbe4d3;
+    border: 1px solid;
+}
+
+#botao-adc:hover {
+    background-color: #fcede2;
+}
+
+.lista-equipe {
+    margin-left: 100px;
+}
+
+.quantidade-vendida {
+    width: 40px;
+    text-align: right;
+}
+
+.tabela-vendas, .historico-vendas, .tabela-ctrl-estoque {
+    margin-left: 25%;
+}
+
+.coluna-tabela-vendas {
+    width: 260px
+}
+
+#data-venda {
+    width: fit-content;
+}

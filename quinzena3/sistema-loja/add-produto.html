@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;1,100;1,200&display=swap" rel="stylesheet">
+    <title>Adicionar Produto - Brincanimal</title>
+</head>
+<body>
+    <header>
+        <div class="cabecalho">
+            <h1 class="logo-loja"><img src="img/outline_pets_black_24dp.png"> brincanimal <img src="img/outline_pets_black_24dp.png"></h1>
+            <p class="slogan">O lugar que diverte seu pet.</p>
+        </div>
+        
+        <nav class="menu-navegacao">
+            <a href="index.html" class="item-menu">Página Inicial</a>
+            <a href="ctrl-estoque.html" class="item-menu">Controle de Estoque</a>
+            <a href="venda.html" class="item-menu">Vendas</a>
+            <a href="add-produto.html" class="item-menu selecionado">Adicionar Produto</a>
+            <a href="historico-de-vendas.html" class="item-menu">Histórico de Vendas</a>
+            <a href="funcionarios.html" class="">Funcionários</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="titulo-paginas">Adicionar Produto</h2>
+        <table class="tabela-adc-produto">
+                <form action="">
+                <tr>
+                    <th class="linha-form"><label for="link-foto">Link para foto: </label></th>
+                    <th class="linha-form"><input type="url" id="link-foto" name="link-foto"></th>
+                </tr>
+                
+                <tr>
+                    <th class="linha-form"><label for="descricao">Descrição do produto: </label></th>
+                    <!-- Adicione o id apropriado para o input abaixo -->
+                    <th class="linha-form"><input type="text" id="descricao-produto" name="descrição"></th>
+                </tr>
+                
+                <tr>
+                    <th class="linha-form"><label for="preco">Preço (em R$): </label></th>
+                    <!-- Adicione o id apropriado e o type para receber números abaixo -->
+                    <th class="linha-form"><input type="text" id="preco-produto" name="preço"></th>
+                </tr>
+                
+                <tr>
+                    <!-- Preencha as propriedades necessárias para os elementos abaixo -->
+                    <th class="linha-form"><label>Quantidade disponível: </label></th>
+                    <th class="linha-form"><input type="number" id="quantidade-disponivel" name="quantidade" min="0" placeholder="0"></th>
+                </tr>
+    </table>
+    <table>
+                <tr>
+                    <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
+                    <th><button type="submit" id="botao-adc">Adicionar</button></th>
+                </tr>
+        </form>
+    </table>
+    </main>
+    <footer>
+        <div>
+            <p>Siga-nos nas redes sociais!</p>
+
+            <div>
+                <img src="img/facebook.png"/>
+                <img src="img/instagram.png"/>
+                <img src="img/twitter.png"/>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
