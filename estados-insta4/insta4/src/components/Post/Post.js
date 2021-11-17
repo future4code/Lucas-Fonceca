@@ -48,11 +48,32 @@ class Post extends React.Component {
     numeroComentarios: 0
   }
 
+
+  adicionaCurtidas = () => {
+ 
+  }
+  
   onClickCurtida = () => {
     this.setState({
       curtido: !this.state.curtido
     })
+
+    const curtidaAtual = this.state.numeroCurtidas;
+    const incrementaCurtida = curtidaAtual + 1;
+    const diminuiCurtida = curtidaAtual -1;
+
+    if (this.state.curtido) {
+      this.setState({
+        numeroCurtidas: diminuiCurtida
+      })      
+    } else {
+      this.setState({
+        numeroCurtidas: incrementaCurtida
+      })
   }
+
+  }
+
 
   onClickComentario = () => {
     this.setState({
