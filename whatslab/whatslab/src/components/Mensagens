@@ -1,0 +1,39 @@
+import styled from 'styled-components';
+import React from 'react';
+
+
+    const Mensagem = styled.p`
+  width: 50%;  
+  height: 30px;
+
+`
+
+export class Mensagem extends React.Component{
+
+ 
+
+    state = {
+        mensagemDoUsuario: ["Oi", "Tudo bem?", "Me responde"],
+        valorMensagem: ""
+    };
+
+    adicionaMensagem = () => {
+        const novaMensagem = this.state.valorMensagem;
+        const mensagensNovas = [novaMensagem, ...this.state.mensagemDoUsuario];
+        
+        this.setState({mensagemDoUsuario: mensagensNovas});
+    }
+
+    onChangeMensagemDoUsuario = (event) => {
+        this.setState({valorMensagem: event.target.value});
+    };
+
+    render () {
+        return <button 
+        onClick={this.adicionaMensagem}>
+        Adicionar 
+        </button>
+        
+        
+    }
+}   
