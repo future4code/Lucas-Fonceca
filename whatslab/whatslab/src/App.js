@@ -1,7 +1,6 @@
 import './App.css';
 import styled from 'styled-components';
-import { Usuario } from './components/Usuario.js';
-import { InputMensagem } from './components/InputMensagem.js';
+import Mensagens from './components/Mensagens.js';
 
 const WrapApp = styled.div`
   margin: 0;
@@ -23,18 +22,11 @@ const CaixaEnvelope = styled.div`
   justify-content: space-evenly;
 `
 
-const BotaoEnviar = styled.button`
-  width: 20%;
-  height: 36px;
-`
-
 function App() {
   return (
     <WrapApp>
       <CaixaEnvelope>
-        <Usuario/>
-        <InputMensagem/>
-        <BotaoEnviar>{"Enviar"}</BotaoEnviar>
+        <Mensagens />
       </CaixaEnvelope>
     </WrapApp>
   );
