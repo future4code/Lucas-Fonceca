@@ -1,8 +1,7 @@
 import React from "react";
-import axios from 'axios';
-import { BASE_URL } from "../../constants/urls";
 import { CharacterListContainer } from "./styled";
 import { PageContainer } from "./styled";
+import { getCharacterList } from "../../services/requests";
 
 
 export default class CharacterListPage extends React.Component {
@@ -11,16 +10,13 @@ export default class CharacterListPage extends React.Component {
     }
 
     componentDidMount (){
-        this.getCharacterList()
+        getCharacterList(this.saveCharacter)
     }
 
-    getCharacterList = () => {
-        axios.get(`${BASE_URL}/people`)
-        .then((response)=> 
-            this.setState({ characterList: response.data.results }))
-        .catch((error)=> 
-            console.log(error.response))
+    saveCharacter = (data) => {
+        this.setState({characterList: data})
     }
+
 
  
 
@@ -28,7 +24,12 @@ export default class CharacterListPage extends React.Component {
         const renderedCharacterList = this.state.characterList.map((character) => {
             return (
                 <CharacterListContainer>
-                    <p key={character.url}>{character.name}</p>
+                    <p 
+                        key={character.url}
+                        onClick={()=> this.props.goToDetailPage(character.url)}
+                    >
+                        {character.name}
+                    </p>
                 </CharacterListContainer>
             )
         });

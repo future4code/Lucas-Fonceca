@@ -6,23 +6,31 @@ import CharacterListPage from "./components/CharacterListPage/CharacterListPage"
 export default class App extends React.Component {
   
   state = {
-    currentPage: "list"
+    currentPage: "list",
+    characterUrl: ""
   }
+
+  goToDetailPage = (url) => {
+    this.setState({currentPage: "detail", characterUrl: url})
+}
+
+  goToListPage = () => {
+  this.setState({currentPage: "list", characterUrl: ""})
+}
+
 
   selectPage = () => {
     switch (this.state.currentPage){
       case "list":
-        return <CharacterListPage />
+        return <CharacterListPage goToDetailPage={this.goToDetailPage}/>
       case "detail":
-        return <CharacterDetailPage />
+        return <CharacterDetailPage goToListPage={this.goToListPage} url={this.state.characterUrl} />
       default:
-        return <CharacterListPage />
+        return <CharacterListPage goToDetailPage={this.goToDetailPage}/>
     }
   }
 
-  goToDetailPage = () => {
-      this.setState = "detail"
-  }
+  
 
 
   render (){
