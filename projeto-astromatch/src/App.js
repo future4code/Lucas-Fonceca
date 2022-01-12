@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, Flex } from '@chakra-ui/react'
 import { Home } from './Components/Home'
 
 import { Matches } from "./Components/Matches"
@@ -21,12 +21,14 @@ function App() {
 
   return (
     <ChakraProvider>
-      {screen === "home" ? 
-      <Home
-      goToMatchesPage={goToMatchesPage} 
-      /> : 
-      <Matches goToHomePage={goToHomePage} />
-      }
+      <Flex justify={'center'}>
+        {screen === "home" ? 
+        <Home
+        goToMatchesPage={goToMatchesPage} 
+        /> : 
+        <Matches goToHomePage={goToHomePage} />
+        }
+      </Flex>
     </ChakraProvider>
   )
 } 
