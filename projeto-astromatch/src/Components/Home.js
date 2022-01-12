@@ -21,15 +21,25 @@ export const Home = (props) => {
 
     const [choice, setChoice] = useState(true)
 
-    const didChoice = () => { 
-      setChoice(true)
+    const choosePerson = () => {
+      const body = {
+        id: person.id,
+        choice: true
+      }
+
+      axios.post(`${BASE_URL}/choose-person`, body)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err.response))
+
+      getProfileList()
+      
+    }
+
+    const onClickChoosePerson = () => {
+      setChoice(!true)
       getProfileList()
     }
-    
-    const didNotChoice = () => {
-      setChoice(false)
-      getProfileList()
-    }
+   
     
     
 
@@ -95,13 +105,13 @@ export const Home = (props) => {
             as={AiOutlineClose} 
             bg={'lightgray'} 
             color={'lightcoral'}
-            onClick={didNotChoice}
+            onClick={onClickChoosePerson}
             />
             <IconButton 
             as={AiFillHeart}  
             bg={'lightgray'} 
             color={'green.600'}
-            onClick={didChoice}
+            onClick={choosePerson}            
             />
           </Grid>
         </Box>
