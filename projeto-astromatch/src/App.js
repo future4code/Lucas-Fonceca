@@ -1,8 +1,8 @@
 import { React, useState } from 'react'
 import { ChakraProvider, Flex } from '@chakra-ui/react'
-import { Home } from './Components/Home'
+import { Home } from './Components/Home/Home'
 
-import { Matches } from "./Components/Matches"
+import { Matches } from "./Components/Matches/Matches"
 
 
 
@@ -29,7 +29,7 @@ function App() {
         <Matches goToHomePage={goToHomePage} />
         }
       </Flex>
-    </ChakraProvider>
+    </ChakraProvider> 
   )
 } 
 
