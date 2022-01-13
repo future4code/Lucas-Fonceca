@@ -20,24 +20,27 @@ export const Home = (props) => {
 
 
     const [choice, setChoice] = useState(true)
+    // Aqui eu criei o useState do choice, mas não sei onde eu tenho que usar esse choice. 
 
     const choosePerson = () => {
       const body = {
         id: person.id,
         choice: true
       }
+      //eu imagino que eu precise usar esse id em algum lugar pra poder fazer o match aparecer na lista de match, mas eu não sei como.
 
       axios.post(`${BASE_URL}/choose-person`, body)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err.response))
 
       getProfileList()
-      
+      //aqui é a requisição pra escolher o match. Essa função choosePerson tá no coraçãozinho que dá like, e o getProfileList tá ali pra poder apresentar outro card quando eu dou like.
     }
 
     const onClickChoosePerson = () => {
       setChoice(!true)
       getProfileList()
+      // e essa função seta o "choice" pra falso, pra poder ir no "dislike" e não dar match.
     }
    
     

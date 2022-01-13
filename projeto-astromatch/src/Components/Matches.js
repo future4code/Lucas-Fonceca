@@ -7,17 +7,20 @@ import { BASE_URL } from "../Constants/urls"
 
 export function Matches(props) {
 
-    const [choiceList, setChoiceList] = useState({})
+    const [choiceList, setChoiceList] = useState([])
 
     const getMatches = () => {
-        axios.get(`${BASE_URL}/matches/${props.choiceId}`)
-        .then((res) => setChoiceList({...res.data.profile}))
+        axios.get(`${BASE_URL}/matches/`)
+        .then((res) => setChoiceList([...res.data.profile]))
         .catch((err) => console.log (err.response))
       }
   
       useEffect(() =>{
         getMatches()
-      }, [props.choiceId])
+      }, [])
+
+      //aí aqui que f%#@#$ tudo. Eu realmente não sei o que fazer. O que eu queria fazer era: pegar os dados do perfil que eu dei like e deu match e passar ali pra baixo, mas eu não sei o que fazer. Eu acredito que eu precise usar um props. alguma coisa ali no segundo argumento do useEffect, mas não faço ideia qual seja.
+      
 
 
    return(
