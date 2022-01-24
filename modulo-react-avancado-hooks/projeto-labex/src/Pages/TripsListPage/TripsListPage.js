@@ -18,14 +18,18 @@ function TripsListPage() {
         history.push("/trips-list/application-form")
     }
 
+    const goToHomePage = () => {
+        history.push("/");
+    };
+    
     return (
         <div>
             <Flex maxW='container.xl' 
             padding={8}
             align={'center'}
             justify={'space-evenly'}>
-                <Heading as='h1' size={'2xl'}> 
-                <Icon as={SiStarship} /> 
+                <Heading as='h1' size={'2xl'} onClick={goToHomePage} cursor={'pointer'}> 
+                <Icon as={SiStarship} onClick={goToHomePage} cursor={'pointer'}/> 
                 LabeX
                 </Heading>
                 <Spacer />
@@ -51,21 +55,26 @@ function TripsListPage() {
             </Flex>
             <Box align={'center'}>
             <Flex justify={'space-around'}>
-                <Grid templateColumns='repeat(2, 1fr)' gap={10} align={'center'} justify={'space-around'}>
-                    <GridItem boxShadow='md' p='6' rounded='md' w={'fit-content'} bg={'green.50'}>
-                        <CardTrip />
-                    </GridItem>
-                    <GridItem boxShadow='md' p='6' rounded='md' w={'fit-content'} bg={'green.50'}>
-                        <CardTrip />
-                    </GridItem>
-                    <GridItem boxShadow='md' p='6' rounded='md' w={'fit-content'} bg={'green.50'}>
-                        <CardTrip />
-                    </GridItem>
-                    <GridItem boxShadow='md' p='6' rounded='md' w={'fit-content'} bg={'green.50'}>
+                <Grid templateColumns='repeat(1, 1fr)' gap={10} align={'center'} justify={'space-around'}>
+                    <GridItem boxShadow='md' 
+                        p='6' 
+                        rounded='md' 
+                        w={'fit-content'} 
+                        bg={'gray.50'} 
+                        >
                         <CardTrip />
                     </GridItem>
                 </Grid>
             </Flex>
+            <Button  
+                colorScheme='teal' 
+                variant='outline' 
+                margin={2}
+                marginTop={8}
+                onClick={goToHomePage}
+                >
+                    Voltar
+            </Button>
             <Button  
                 colorScheme='teal' 
                 variant='outline' 

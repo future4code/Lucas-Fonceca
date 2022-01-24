@@ -1,7 +1,8 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
-import { Flex, Spacer, Stack, InputGroup, InputLeftAddon, Input, Button, Heading, Text, Center, Link } from '@chakra-ui/react'
+import { Flex, Spacer, Stack, InputGroup, InputLeftAddon, Input, Button, Heading, Text, Center, Link, useToast } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
+
 
 function HomePage() {
 
@@ -14,6 +15,7 @@ function HomePage() {
     const goToAdminPage = () => {
         history.push("/admin");
     };
+
 
     return (
         <div>
@@ -51,18 +53,15 @@ function HomePage() {
                 border={'2px'}
                 borderColor={'gray.300'}
                 w={'500px'}
-                marginTop={'4'}
-                justifyItems={'center'}>
+                marginTop={'4'}>
                     <Text w={500}
                     padding={4}> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia erat et ligula commodo, non gravida elit elementum. Donec euismod mi diam, quis auctor enim pretium sit amet. Curabitur pellentesque odio eu lectus tincidunt, vel mattis nunc suscipit. Sed faucibus leo nibh, vitae sodales massa pellentesque quis. Donec semper turpis leo, quis tempor risus luctus sit amet. Phasellus facilisis bibendum elit, vel hendrerit velit tristique nec. Morbi faucibus sed felis id gravida. {' '} <br/>
-                        <Link 
-                        href='#' 
-                        color={'red'} 
-                        textDecoration={'underline'} 
+                        Somos uma empresa focada em viagens interplanetárias<br/>
+                        <Button
                         textAlign={'center'}
                         onClick={goToTripsListPage}
-                        >Descubra nossos destinos!</Link>
+                        rightIcon={<ArrowForwardIcon />}
+                        >Descubra nossos destinos!</Button>
                     </Text>
                 </Flex>
             </Flex>
