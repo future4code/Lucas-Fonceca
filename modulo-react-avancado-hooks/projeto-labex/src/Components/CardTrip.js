@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, color } from "@chakra-ui/react";
-import { BASE_URL } from "../Links/links";
+import { BASE_URL } from "../Utils/links";
 import axios from "axios";
 
 export default function CardTrip(props) {

@@ -3,7 +3,6 @@ import AdminHomePage from "../Pages/AdminHomePage/AdminHomePage";
 import ApplicationFormPage from "../Pages/ApplicationFormPage/ApplicationFormPage";
 import CreateTripPage from "../Pages/CreateTripPage/CreateTripPage";
 import HomePage from "../Pages/HomePage/HomePage";
-import LoginPage from "../Pages/LoginPage/LoginPage";
 import TripsDetailsPage from "../Pages/TripsDetailsPage/TripsDetailsPage";
 import TripsListPage from "../Pages/TripsListPage/TripsListPage";
 
@@ -13,10 +12,6 @@ export const Router = () => {
             <Switch>
                 <Route exact path={"/"}>
                     <HomePage />
-                </Route>
-
-                <Route exact path={"/login"}>
-                    <LoginPage />
                 </Route>
 
                 <Route exact path={"/trips-list"}>
