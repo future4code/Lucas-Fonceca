@@ -2,14 +2,12 @@ import React from 'react'
 import { useHistory } from "react-router-dom";
 import { 
     Flex, 
-    Icon, 
     Button, 
     Heading,  
     Center,
     Box 
 } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import {SiStarship} from 'react-icons/si'
 import { LoginPopUp } from '../../Components/ModalLogin';
 import { PagesHeader } from '../../Components/Header';
 
@@ -21,15 +19,6 @@ function HomePage() {
     const goToTripsListPage = () => {
         history.push("/trips-list");
     };
-    
-    const goToHomePage = () => {
-        history.push("/");
-    };
-
-
-
-
-
 
     return (
         <Box

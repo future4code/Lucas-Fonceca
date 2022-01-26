@@ -21,10 +21,6 @@ import { BASE_URL } from '../Utils/links';
 
 export function LoginPopUp() {
     const history = useHistory();
-    
-    const goToAdminPage = () => {
-        history.push("/admin");
-    };
 
     const [email, setEmail] = useState ("")
     const [password, setPassword] = useState("")

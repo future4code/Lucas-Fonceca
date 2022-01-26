@@ -34,18 +34,28 @@ function AdminHomePage() {
         .catch(err => console.log(err))
     }
 
-   
-
-
     const renderedTriplist = tripsState.map((trip) => {
+        
+
+        const key = (trip.id)
+        
+        const goToTripsDetailsPage = () => {
+            localStorage.setItem("id", trip.id)
+            history.push(`/admin/trips/${key}`)
+        }
+
         return (
-            <Flex justify={'space-around'}>
+            <Flex justify={'space-around'}
+            key={trip.id}>
                 <Box ml='3' border={'2px'} 
                 marginTop={'13px'}
                 paddingRight={'13px'}
                 paddingLeft={'13px'}
                 width={'300px'}
-                _hover={{bg: 'gray.800', color: 'white'}}>
+                _hover={{bg: 'gray.800', color: 'white'}}
+                cursor={'pointer'}
+                onClick={goToTripsDetailsPage}
+                >
                     <Text fontWeight='bold'>
                     {trip.planet}
                     </Text>
