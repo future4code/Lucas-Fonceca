@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useHistory } from "react-router-dom";
 import {
     Drawer,
     DrawerBody,
@@ -15,11 +16,6 @@ import {
     Input,
     Select,
     Textarea,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberDecrementStepper,
-    NumberIncrementStepper,
     FormControl
   } from '@chakra-ui/react'
 import {
@@ -33,7 +29,7 @@ import { useParams } from 'react-router-dom';
 
   function CreateTripPage() {
     
-    const { id } = useParams();
+    const history = useHistory();
     const { isOpen, onOpen, onClose } = useDisclosure()
     const firstField = React.useRef()
     const { form, onChange, cleanFields } = useForm({name: "", planet: "", date: "", description: "", durationInDays: ""})
@@ -51,6 +47,8 @@ import { useParams } from 'react-router-dom';
       })
       .then(alert("Viagem criada com sucesso!"))
       .catch(err => console.log(err))
+
+      history.go(0)
     }
 
 

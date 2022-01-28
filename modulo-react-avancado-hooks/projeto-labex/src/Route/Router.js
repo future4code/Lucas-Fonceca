@@ -17,7 +17,7 @@ export const Router = () => {
                     <TripsListPage />
                 </Route>
 
-                <Route exact path={"/trips-list/application-form"}>
+                <Route exact path={"/trips-list/application-form/"}>
                     <ApplicationFormPage/>
                 </Route>
 

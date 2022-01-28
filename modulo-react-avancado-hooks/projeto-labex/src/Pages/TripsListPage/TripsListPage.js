@@ -16,7 +16,7 @@ function TripsListPage() {
     const history = useHistory();
 
     const goToApplicationFormPage = () => {
-        history.push("/trips-list/application-form")
+        history.push(`/trips-list/application-form/`)
     }
 
     const goToHomePage = () => {

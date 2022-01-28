@@ -3,7 +3,7 @@ import { Box, color } from "@chakra-ui/react";
 import { BASE_URL } from "../Utils/links";
 import axios from "axios";
 
-export default function CardTrip(props) {
+export default function CardTrip() {
 
     const [tripsState, setTripsState] = useState ([])
 

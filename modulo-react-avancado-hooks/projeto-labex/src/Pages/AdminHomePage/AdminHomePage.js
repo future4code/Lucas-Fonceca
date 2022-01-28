@@ -24,10 +24,9 @@ function AdminHomePage() {
         history.push("/");
     };
 
-
     useEffect(() => {
         getTripsList()
-    }, [])  
+    }, [`${BASE_URL}/trips`])  
 
     
     const [tripsState, setTripsState] = useState ([])
@@ -56,6 +55,8 @@ function AdminHomePage() {
             })
             .then(alert("Viagem deletada"))
             .catch(err => console.log(err))
+
+            history.go(0)
           }
 
         return (
@@ -71,10 +72,11 @@ function AdminHomePage() {
                     height={'100px'}
                     _hover={{bg: 'gray.800', color: 'white'}}
                     cursor={'pointer'}
-                    onClick={goToTripsDetailsPage}
                 >
                     <GridItem 
                         colSpan={4}
+                        onClick={goToTripsDetailsPage}
+
                         >
                         <Text fontWeight='bold'>
                         {trip.name}
@@ -96,6 +98,7 @@ function AdminHomePage() {
                     </GridItem>
                     <GridItem 
                         colSpan={4}
+                        onClick={goToTripsDetailsPage}
                         >
                         <Text fontSize='sm'>{trip.description}</Text>
                     </GridItem>

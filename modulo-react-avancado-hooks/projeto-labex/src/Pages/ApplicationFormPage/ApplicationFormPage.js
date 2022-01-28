@@ -1,7 +1,6 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import { useHistory, useParams } from "react-router-dom";
 import { Flex, Input, Button, Heading, Box, Icon, FormControl, FormLabel, Select, NumberInput, NumberDecrementStepper, NumberIncrementStepper, NumberInputField, NumberInputStepper, Textarea, useToast } from '@chakra-ui/react'
-import {SiStarship} from 'react-icons/si'
 import { PagesHeader } from "../../Components/Header";
 import useForm from "../../hooks/useForm";
 import axios from "axios";
@@ -10,16 +9,32 @@ import { BASE_URL } from "../../Utils/links";
 
 function ApplicationFormPage() {
 
-    const { id } = useParams;
     const { form, onChange, cleanFields } = useForm({name: "", age: "", applicationText: "", profession: "", country: "" });
     const history = useHistory();
+    const [tripsState, setTripsState] = useState ([]);
+    const [tripId, setTripId] = useState ("");
+
+    const onChangeTrip = (event) => {
+        setTripId(event.target.value)
+    }
+
+    const getTripsList = () => {
+        axios.get(`${BASE_URL}/trips`)
+        .then(res => setTripsState(res.data.trips))
+        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getTripsList()
+    }, []);
+
 
     const onSubmitApplication = (event) => {
         event.preventDefault();
 
         cleanFields();
 
-        axios.post(`${BASE_URL}/trips/${id}`, {
+        axios.post(`${BASE_URL}/trips/${tripId}/apply`, {
             ...form
         })
         .then(({data}) => {
@@ -34,7 +49,8 @@ function ApplicationFormPage() {
     };
 
 
-    const toast = useToast()
+    const toast = useToast();
+
 
 
 
@@ -74,7 +90,22 @@ function ApplicationFormPage() {
                     value={form.email}
                     onChange={onChange}
                 />
-                <FormLabel htmlFor='country' textAlign={'center'}>País de origem:</FormLabel>
+                <FormLabel htmlFor='country' textAlign={'center'}>Escolha uma viagem:</FormLabel>
+                <Select 
+                    id='trip' 
+                    placeholder='Selecione a viagem de sua preferência' 
+                    w={'400px'}
+                    name="trip"
+                    value={tripId}
+                    onChange={onChangeTrip}
+                    >
+                    {tripsState.map((trip) => {
+                        // console.log("id", trip.id)
+
+                    return <option value={trip.id} name={'trip'} key={trip.id}>{trip.name}</option>
+                    })}
+                </Select>
+                <FormLabel htmlFor='country' textAlign={'center'}>Escolha seu país de origem:</FormLabel>
                 <Select 
                     id='country' 
                     placeholder='Selecione seu país de origem' 
