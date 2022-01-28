@@ -8,7 +8,7 @@ import {
     Box 
 } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import { LoginPopUp } from '../../Components/ModalLogin';
+import { LoginPopUp } from '../LoginPage/ModalLogin';
 import { PagesHeader } from '../../Components/Header';
 
 

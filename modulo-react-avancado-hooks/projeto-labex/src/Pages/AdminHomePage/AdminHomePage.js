@@ -6,11 +6,15 @@ import {
     Box,
     Text,
     Button,
-    Grid
+    Grid,
+    GridItem,
+    IconButton,
+    Tooltip
 } from '@chakra-ui/react'
 import { BASE_URL } from "../../Utils/links"
 import { PagesHeader } from "../../Components/Header";
 import CreateTripPage from "../CreateTripPage/CreateTripPage";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 
 function AdminHomePage() {
@@ -44,23 +48,58 @@ function AdminHomePage() {
             history.push(`/admin/trips/${key}`)
         }
 
+        const deleteTrip = () => {
+            axios.delete(`${BASE_URL}/trips/${key}`, {
+              headers: {
+                auth: localStorage.getItem("token")
+              }
+            })
+            .then(alert("Viagem deletada"))
+            .catch(err => console.log(err))
+          }
+
         return (
             <Flex justify={'space-around'}
             key={trip.id}>
-                <Box ml='3' border={'2px'} 
-                marginTop={'13px'}
-                paddingRight={'13px'}
-                paddingLeft={'13px'}
-                width={'300px'}
-                _hover={{bg: 'gray.800', color: 'white'}}
-                cursor={'pointer'}
-                onClick={goToTripsDetailsPage}
+                <Grid
+                    templateRows='repeat(2, 1fr)'
+                    templateColumns='repeat(5, 1fr)'
+                    border={'2px'} 
+                    marginTop={'13px'}
+                    padding={'13px'}
+                    width={'500px'}
+                    height={'100px'}
+                    _hover={{bg: 'gray.800', color: 'white'}}
+                    cursor={'pointer'}
+                    onClick={goToTripsDetailsPage}
                 >
-                    <Text fontWeight='bold'>
-                    {trip.planet}
-                    </Text>
-                    <Text fontSize='sm'>{trip.name}</Text>
-                </Box>
+                    <GridItem 
+                        colSpan={4}
+                        >
+                        <Text fontWeight='bold'>
+                        {trip.name}
+                        </Text>
+                    </GridItem>
+                    <GridItem 
+                        rowSpan={2} 
+                        colSpan={1}
+                        alignSelf={'center'}
+                        >
+                        <Tooltip label={'Deletar viagem'}>
+                            <IconButton
+                                colorScheme='red'
+                                aria-label='Deletar viagem'
+                                icon={<DeleteIcon />}
+                                onClick={deleteTrip}
+                            />
+                        </Tooltip>
+                    </GridItem>
+                    <GridItem 
+                        colSpan={4}
+                        >
+                        <Text fontSize='sm'>{trip.description}</Text>
+                    </GridItem>
+                </Grid>
             </Flex>
         )
     })

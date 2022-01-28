@@ -23,7 +23,9 @@ export default function CardTrip(props) {
                 borderWidth='1px' 
                 borderRadius='lg' 
                 overflow='hidden' 
-                _hover={{bg: 'gray.800', color: 'white'}}>
+                _hover={{bg: 'gray.800', color: 'white'}}
+                marginBottom={'20px'}
+                key={trip.id}>
 
                 <Box p='6'>
 
@@ -62,7 +64,7 @@ export default function CardTrip(props) {
 
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+        <Box maxW='sm' overflow='hidden' paddingTop={'20px'}>
             {renderedTriplist}
         </Box>  
     )

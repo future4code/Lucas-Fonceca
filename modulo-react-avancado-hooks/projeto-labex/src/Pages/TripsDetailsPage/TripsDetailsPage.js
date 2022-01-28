@@ -36,14 +36,21 @@ function TripsDetailsPage() {
         getTripsById()
     }, [])
 
-    let isCrewMember = false;
-
-    const onClickCrewMember = () => {
-        isCrewMember = true;
-        console.log(`É tripulante? ${isCrewMember}`)
-    }
 
     const renderedTripCandidatesList = tripCandidates.map((candidates) => {
+        
+        const key = candidates.id;
+        
+        let onClickCrewMember = () => {
+            axios.post(`${BASE_URL}/trips/${id}/candidates/${key}/decide`, {
+                headers: {
+                    auth: localStorage.getItem("token")
+                }
+            })
+            .then(res => console.log(res.data.trip.candidates.approve))
+            .catch(err => console.log(err))
+        }
+
         return(
         <Flex
             justify={'center'}
