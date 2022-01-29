@@ -1,5 +1,5 @@
 import { PagesHeader } from "../../Components/Header"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import { BASE_URL } from "../../Utils/links"
@@ -19,6 +19,7 @@ import { AddIcon } from '@chakra-ui/icons'
 
 function TripsDetailsPage() {
     
+    const history = useHistory()
     const { id } = useParams();
     const [tripCandidates, setTripCandidates] = useState([]);
 
@@ -36,75 +37,91 @@ function TripsDetailsPage() {
         getTripsById()
     }, [])
 
+    const goToAdminPage = () => {
+        history.push("/admin")
+    } 
+
 
     const renderedTripCandidatesList = tripCandidates.map((candidates) => {
         
         const key = candidates.id;
         
-        let onClickCrewMember = () => {
-            axios.post(`${BASE_URL}/trips/${id}/candidates/${key}/decide`, {
+        let onClickCrewMember = (approve) => {
+
+            const body = { approve: approve }
+            
+            axios.put(`${BASE_URL}/trips/${id}/candidates/${key}/decide`, body, {
                 headers: {
                     auth: localStorage.getItem("token")
                 }
             })
-            .then(res => console.log(res.data.trip.candidates.approve))
+            .then(res => console.log(res))
             .catch(err => console.log(err))
         }
-
         return(
-        <Flex
-            justify={'center'}
-            key={candidates.id}
-            >
-            <Flex 
-                border={"1px"}
-                w={'350px'}
-                marginTop={'13px'}
-                justify={'space-evenly'}
-                paddingTop={'8px'}
-                paddingBottom={'8px'}
+        <div>
+            <Flex
+                justify={'center'}
+                key={candidates.id}
                 >
-                <Box ml='3'>
-                    <Text>
-                        <strong>
-                            {`Nome: `}
-                        </strong> 
-                            {candidates.name}
-                    </Text>
-                    <Text fontSize='sm'> <strong>{`Profissão: `}</strong>
-                        {candidates.profession}
-                    </Text>
-                </Box>
-                <ButtonGroup size='sm' isAttached variant='outline' alignSelf={'center'}>
-                    
-                    <Tooltip label='Ver detalhes'>
-                        <Button mr='-px'>Detalhes</Button>
-                    </Tooltip>
-                    <Tooltip label='Adicionar à lista de Tripulantes'>
-                        <IconButton aria-label='Add to friends' icon={<AddIcon />} onClick={onClickCrewMember}/>
-                    </Tooltip>
-                </ButtonGroup>
+                <Flex 
+                    border={"1px"}
+                    w={'400px'}
+                    marginTop={'13px'}
+                    justify={'space-evenly'}
+                    paddingTop={'8px'}
+                    paddingBottom={'8px'}
+                    >
+                    <Box ml='3' textAlign={'left'} marg>
+                        <Text>
+                            <strong>
+                                {`Nome: `}
+                            </strong> 
+                                {candidates.name}
+                        </Text>
+                        <Text fontSize='sm'> <strong>{`Profissão: `}</strong>
+                            {candidates.profession}
+                        </Text>
+                        <Text fontSize='sm'> <strong>{`Idade: `}</strong>
+                            {candidates.age}
+                        </Text>
+                        <Text fontSize='sm'> <strong>{`Texto de inscrição: `}</strong>
+                            {candidates.applicationText}
+                        </Text>
+                    </Box>
+                    <ButtonGroup size='sm' isAttached variant='outline' alignSelf={'center'}>    
+                        <Tooltip label='Adicionar à lista de Tripulantes'>
+                            <Button  onClick={() => onClickCrewMember(true)} mr='-px' >Aceitar</Button>
+                        </Tooltip>
+                        <Tooltip label='Adicionar à lista de Tripulantes'>
+                            <IconButton aria-label='Add to Crew List' icon={<AddIcon />} onClick={() => onClickCrewMember(true)}/>
+                        </Tooltip>
+                    </ButtonGroup>
+                </Flex>
             </Flex>
-        </Flex>
+        </div>
         )
     })
 
     return (
         <div>
             {PagesHeader()}
-            <Grid gridTemplateColumns={'repeat(2, 1fr)'}>
-                <GridItem align={'center'}>
-                    <Heading as='h3' size='lg'>
-                        Lista de Candidatos:
-                    </Heading>
-                    {renderedTripCandidatesList}
-                </GridItem>
-                <GridItem align={'center'}>
-                    <Heading as='h3' size='lg'>
-                        Lista de Tripulantes
-                    </Heading>
-                </GridItem>
-            </Grid>
+            <Flex align={'space-between'} flexDirection={'column'}>
+                <Grid gridTemplateColumns={'repeat(2, 1fr)'}>
+                    <GridItem align={'center'}>
+                        <Heading as='h3' size='lg'>
+                            Lista de Candidatos:
+                        </Heading>
+                        {renderedTripCandidatesList}
+                    </GridItem>
+                    <GridItem align={'center'}>
+                        <Heading as='h3' size='lg'>
+                            Lista de Tripulantes
+                        </Heading>
+                    </GridItem>
+                </Grid>
+                <Button marginTop={'25px'} onClick={goToAdminPage} w={'200px'} alignSelf={'center'}>Voltar</Button>
+            </Flex>
         </div>
     )
 }
