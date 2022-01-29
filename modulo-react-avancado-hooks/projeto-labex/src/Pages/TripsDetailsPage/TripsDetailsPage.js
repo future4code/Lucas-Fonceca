@@ -41,23 +41,24 @@ function TripsDetailsPage() {
         history.push("/admin")
     } 
 
+    let onClickCrewMember = (candidateId, approve) => {
+
+        const body = { approve: approve }
+        
+        axios.put(`${BASE_URL}/trips/${id}/candidates/${candidateId}/decide`, body, {
+            headers: {
+                auth: localStorage.getItem("token")
+            }
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+    }
 
     const renderedTripCandidatesList = tripCandidates.map((candidates) => {
         
-        const key = candidates.id;
+        const candidateId = candidates.id;
         
-        let onClickCrewMember = (approve) => {
-
-            const body = { approve: approve }
-            
-            axios.put(`${BASE_URL}/trips/${id}/candidates/${key}/decide`, body, {
-                headers: {
-                    auth: localStorage.getItem("token")
-                }
-            })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-        }
+        
         return(
         <div>
             <Flex
