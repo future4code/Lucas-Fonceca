@@ -54,6 +54,21 @@ function TripsDetailsPage() {
         .catch(err => console.log(err))
     }
 
+
+    const approvedCandidates = tripCandidates && 
+    tripCandidates.approved && 
+    tripCandidates.approved.map((trip) => {
+        return (
+          <ul>
+            <li>
+              <p key={trip.id} >Nome: {trip.name}</p>
+              <p>Idade: {trip.age}</p>
+              <p>País: {trip.country}</p>
+            </li>
+          </ul>
+        )
+      })
+
     const renderedTripCandidatesList = tripCandidates.map((candidates) => {
         
         const candidateId = candidates.id;
@@ -73,7 +88,7 @@ function TripsDetailsPage() {
                     paddingTop={'8px'}
                     paddingBottom={'8px'}
                     >
-                    <Box ml='3' textAlign={'left'} marg>
+                    <Box ml='3' textAlign={'left'} marginRight={'13px'}>
                         <Text>
                             <strong>
                                 {`Nome: `}
@@ -90,14 +105,6 @@ function TripsDetailsPage() {
                             {candidates.applicationText}
                         </Text>
                     </Box>
-                    <ButtonGroup size='sm' isAttached variant='outline' alignSelf={'center'}>    
-                        <Tooltip label='Adicionar à lista de Tripulantes'>
-                            <Button  onClick={() => onClickCrewMember(true)} mr='-px' >Aceitar</Button>
-                        </Tooltip>
-                        <Tooltip label='Adicionar à lista de Tripulantes'>
-                            <IconButton aria-label='Add to Crew List' icon={<AddIcon />} onClick={() => onClickCrewMember(true)}/>
-                        </Tooltip>
-                    </ButtonGroup>
                 </Flex>
             </Flex>
         </div>
@@ -108,19 +115,10 @@ function TripsDetailsPage() {
         <div>
             {PagesHeader()}
             <Flex align={'space-between'} flexDirection={'column'}>
-                <Grid gridTemplateColumns={'repeat(2, 1fr)'}>
-                    <GridItem align={'center'}>
-                        <Heading as='h3' size='lg'>
+                        <Heading as='h3' size='lg' textAlign={'center'} marginBottom={'13px'}>
                             Lista de Candidatos:
                         </Heading>
                         {renderedTripCandidatesList}
-                    </GridItem>
-                    <GridItem align={'center'}>
-                        <Heading as='h3' size='lg'>
-                            Lista de Tripulantes
-                        </Heading>
-                    </GridItem>
-                </Grid>
                 <Button marginTop={'25px'} onClick={goToAdminPage} w={'200px'} alignSelf={'center'}>Voltar</Button>
             </Flex>
         </div>
