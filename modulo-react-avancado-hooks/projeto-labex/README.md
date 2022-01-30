@@ -9,7 +9,7 @@ O projeto simula uma empresa de viagens interplanetárias (LabeX).
 
 ### Se candidatar para viagens
 
-Ao final da página [Descubra nossos destinos] (http://smoggy-lamp.surge.sh/trips-list) é possível candidatar-se à viagens interplanetárias.
+Ao final da página [Descubra nossos destinos](http://smoggy-lamp.surge.sh/trips-list) é possível [candidatar-se à viagens interplanetárias](http://smoggy-lamp.surge.sh/trips-list/application-form/).
 
 ### Área administrativa
 Na página administrativa, após fazer o log-in e ser autenticado, é possível visualizar todas as viagens e os candidatos de cada uma delas, bem como criar novos destinos dentro da Via Láctea.
