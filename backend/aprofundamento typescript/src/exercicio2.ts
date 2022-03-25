@@ -23,7 +23,7 @@
 
 function obterEstatisticas(numeros: Array<number>) {
     const numerosOrdenados: Array<number> = numeros.sort(
-        (a , b) => a- b
+        (a , b) => a - b
     )
 
     let soma: number = 0;
@@ -43,9 +43,5 @@ function obterEstatisticas(numeros: Array<number>) {
 }
 
 // b) soma; num; maior; menor e media. Todos são "number"
-// c)
+// c) não entendi
 
-// type amostra = {
-//         numeros: Array<number>,
-//         obterEstatisticas: function 
-// }
