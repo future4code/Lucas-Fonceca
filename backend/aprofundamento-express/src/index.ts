@@ -16,16 +16,16 @@ const server = app.listen(process.env.PORT || 3003, () => {
   }
 });
 
-// Exercício 1
+// // Exercício 1
 
 app.get("/ping", (req: Request, res: Response) => {
   res.send("Pong");
 });
 
-// Exercício 4
+// // Exercício 4
 
 app.get("/lista-tarefas/false", (req: Request, res: Response) => {
-  const tarefasEmAndamento = afazeres.filter(
+  const tarefasEmAndamento = afazeres.lista.filter(
     (tarefa) => tarefa.completed === false
   );
 
@@ -33,14 +33,14 @@ app.get("/lista-tarefas/false", (req: Request, res: Response) => {
 });
 
 app.get("/lista-tarefas/true", (req: Request, res: Response) => {
-  const tarefasCompletas = afazeres.filter(
+  const tarefasCompletas = afazeres.lista.filter(
     (tarefa) => tarefa.completed === true
   );
 
   res.send(tarefasCompletas);
 });
 
-// Exercício 5
+// // Exercício 5
 
 app.post("/lista-tarefas", (req: Request, res: Response) => {
   const userName = req.headers.authorization;
@@ -57,37 +57,34 @@ app.post("/lista-tarefas", (req: Request, res: Response) => {
     completed: false,
   };
 
-  res.status(201).send([...afazeres, novaTarefa]);
-});
+  res.status(201).send([...afazeres.lista, novaTarefa]);
+  // });
 
-// Exercício 7
+  // // Exercício 7
 
-app.delete("/lista-tarefas", (req: Request, res: Response) => {
-  const idTarefa = req.headers.id;
+  app.delete("/lista-tarefas", (req: Request, res: Response) => {
+    const idTarefa = req.headers.id;
 
-  afazeres.forEach((tarefa) => {
-    if (tarefa.id === idTarefa) {
-      return {};
-    }
-    return tarefa;
+    afazeres.lista = afazeres.lista.filter((tarefa) => {
+      if (tarefa.id === idTarefa) {
+        return false;
+      }
+      return true;
+    });
+    res.status(200).send(afazeres);
   });
-  res.status(200).send(afazeres);
-});
 
-// Exercício 8
+  // // Exercício 8
 
-// app.get("/lista-tarefas", (req: Request, res: Response) => {
-//     res.send(afazeres)
-//   });
+  app.get("/lista-tarefas", (req: Request, res: Response) => {
+    const userId = req.headers.userId;
 
-app.get("/lista-tarefas/:userId", (req: Request, res: Response) => {
-  const userId = req.query.userId;
-
-  afazeres.forEach((usuario) => {
-    if (usuario.userId === userId) {
-      res.status(200).send(afazeres);
-    } else {
-      res.status(400).send("Usuário não encontrado");
-    }
+    afazeres.lista = afazeres.lista.filter((usuario) => {
+      if (usuario.userId === userId) {
+        res.status(200).send(afazeres);
+      } else {
+        res.status(400).send("Usuário não encontrado");
+      }
+    });
   });
 });
