@@ -167,11 +167,7 @@ app.delete("/products/:id", (req: Request, res: Response) => {
     const productId = req.params.id;
 
     const retorna = productsArray.list.findIndex((product) => product.id === productId)
-    //  {
-    //   if (product.id === productId) {
-    //     return {};
-    //   }
-    // });
+
     if (retorna === -1) {
       throw new Error(Errors.MISSING_PARAMETERS.message);
     }
