@@ -25,6 +25,14 @@ const Errors: { [chave: string]: { status: number; message: string } } = {
     status: 401,
     message: "Ops. Algo está errado.\n CPF inválido",
   },
+  DEPOSITO_PRECISA_SER_NUMBER: {
+    status: 401,
+    message: "O depósito precisa ser do tipo number",
+  },
+  DEPOSITO_PRECISA_SER_POSITIVO: {
+    status: 401,
+    message: "O depósito precisa ser maior que 0",
+  },
   MISSING_PARAMETERS: {
     status: 422,
     message: "Alguma informação está faltando. Consulte a documentação.",
@@ -97,8 +105,8 @@ app.post("/contas/criar-conta", (req: Request, res: Response) => {
 
 app.get("/contas/saldo", (req: Request, res: Response) => {
   try {
-    const nomeUsuario = req.query.user;
-    const cpfUsuario = req.query.cpf;
+    const nomeUsuario = req.headers.user;
+    const cpfUsuario = req.headers.cpf;
 
     listaDeUsuarios.lista = listaDeUsuarios.lista.filter((usuario) => {
       if (usuario.nome === nomeUsuario && usuario.cpf === cpfUsuario) {
@@ -131,31 +139,46 @@ app.get("/contas/saldo", (req: Request, res: Response) => {
 
 app.put("/contas/deposito", (req: Request, res: Response) => {
   try {
-    const cpf = req.headers.cpf;
-    const deposito: number = req.body.deposito;
-    let novoSaldo: number;
+    const cpf = req.query.cpf;
+    const { deposito } = req.body;
 
-    listaDeUsuarios.lista = listaDeUsuarios.lista.filter((usuario) => {
-      if (cpf === usuario.cpf) {
-        novoSaldo = usuario.saldo + deposito;
-
-        res
-          .status(200)
-          .send(
-            `Depósito efetuado com sucesso. Seu novo saldo é: ${novoSaldo}`
-          );
-      } else {
-        throw new Error(Errors.INVALID_CPF.message);
-      }
-    });
+    const contaComNovoSaldo = listaDeUsuarios.lista.find(
+      (usuario) => usuario.cpf === cpf
+    );
+    if (!contaComNovoSaldo) {
+      throw new Error(Errors.MISSING_PARAMETERS.message);
+    }
+    if (typeof deposito !== "number") {
+      throw new Error(Errors.DEPOSITO_PRECISA_SER_NUMBER.message);
+    }
+    if (deposito <= 0) {
+      throw new Error(Errors.DEPOSITO_PRECISA_SER_POSITIVO.message);
+    }
+    contaComNovoSaldo.saldo += deposito;
+    res.status(200).send("Deu green! Depósito efetuado com sucesso!");
   } catch (error: any) {
     switch (error.message) {
-      case Errors.INVALID_CPF.message:
-        res.status(Errors.INVALID_CPF.status).send(Errors.INVALID_CPF.message);
+      case Errors.MISSING_PARAMETERS.message:
+        res
+          .status(Errors.MISSING_PARAMETERS.status)
+          .send(Errors.MISSING_PARAMETERS.message);
+        break;
+      case Errors.DEPOSITO_PRECISA_SER_NUMBER.message:
+        res
+          .status(Errors.DEPOSITO_PRECISA_SER_NUMBER.status)
+          .send(Errors.DEPOSITO_PRECISA_SER_NUMBER);
+        break;
+      case Errors.DEPOSITO_PRECISA_SER_POSITIVO.message:
+        res
+          .status(Errors.DEPOSITO_PRECISA_SER_POSITIVO.status)
+          .send(Errors.DEPOSITO_PRECISA_SER_POSITIVO.message);
         break;
       default:
-        res.status(Errors.SOMETHING_WENT_WRONG.status).send(Errors.SOMETHING_WENT_WRONG.message);
+        res
+          .status(Errors.SOMETHING_WENT_WRONG.status)
+          .send(Errors.SOMETHING_WENT_WRONG.message);
         break;
     }
   }
 });
+
