@@ -51,9 +51,9 @@ POST http://localhost:3306/task
 Content-Type: application/json
 
 {
-    "userId": "2",
-    "taskTitle": "Estudar geriatria",
-    "taskDescription": "Estudar para as aulas de geriatria",
+    "userId": "1",
+    "taskTitle": "Fazer os desafios do projeto",
+    "taskDescription": "Tentar resolver os desafios do projeto, porque Backend é muito bacana",
     "taskLimitDate": "26/04/2022",
     "taskStatus": "doing"
 }
@@ -62,6 +62,15 @@ Content-Type: application/json
 
 GET http://localhost:3306/task/2
 
+###
+GET http://localhost:3306/task?creatorUserId=3
+
+
+###
+GET http://localhost:3306/user?userName=tx
+
+###
+GET http://localhost:3306/user?tarefa=ger
 
 ### endpoint para deletar tarefa pelo id
 DELETE http://localhost:3306/task/3

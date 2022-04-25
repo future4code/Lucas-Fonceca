@@ -18,15 +18,6 @@ const server = app.listen(process.env.PORT || 3306, () => {
   }
 });
 
-app.get("/user/all", async (req: Request, res: Response): Promise<void> => {
-  try {
-    const userList = await connection("Users");
-    res.status(200).send(userList);
-  } catch (error: any) {
-    res.status(500).send(error.sqlMessage || error.message);
-  }
-});
-
 app.post("/user", async (req: Request, res: Response): Promise<void> => {
   const userName: string = req.body.name;
   const userNickName: string = req.body.nickname;
@@ -46,53 +37,6 @@ app.post("/user", async (req: Request, res: Response): Promise<void> => {
     }
   } else {
     res.status(400).send("Favor conferir os dados inseridos");
-  }
-});
-
-app.get("/user/:id", async (req: Request, res: Response): Promise<void> => {
-  try {
-    const result = await connection("Users").where({ id: req.params.id });
-
-    res.status(200).send(result);
-  } catch (error: any) {
-    res.status(500).send(error.sqlMessage || error.message);
-  }
-});
-
-app.put("/user/:id", async (req: Request, res: Response): Promise<void> => {
-  const userName: string = req.body.name;
-  const userNickName: string = req.body.nickname;
-  const userEmail: string = req.body.email;
-
-  if (userName === "") {
-    res.status(400).send("O nome não pode ficar em branco");
-  }
-  if (userNickName === "") {
-    res.status(400).send("O apelido não pode ficar em branco");
-  }
-  if (userEmail === "") {
-    res.status(400).send("O email não pode ficar em branco");
-  }
-  try {
-    await connection("Users")
-      .update({
-        name: userName,
-        nickname: userNickName,
-        email: userEmail,
-      })
-      .where({ id: req.params.id });
-    res.status(201).send({ message: "Usuário editado com sucesso" });
-  } catch (error: any) {
-    res.status(500).send(error.sqlMessage || error.message);
-  }
-});
-
-app.get("/task/all", async (req: Request, res: Response): Promise<any> => {
-  try {
-    const taskList = await connection("Tasks");
-    res.status(200).send(taskList);
-  } catch (error: any) {
-    res.status(500).send(error.sqlMessage || error.message);
   }
 });
 
@@ -128,6 +72,34 @@ app.post("/task", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
+app.get("/user/all", async (req: Request, res: Response): Promise<void> => {
+  try {
+    const userList = await connection("Users");
+    res.status(200).send(userList);
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+});
+
+app.get("/user/:id", async (req: Request, res: Response): Promise<void> => {
+  try {
+    const result = await connection("Users").where({ id: req.params.id });
+
+    res.status(200).send(result);
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+});
+
+app.get("/task/all", async (req: Request, res: Response): Promise<any> => {
+  try {
+    const taskList = await connection("Tasks");
+    res.status(200).send(taskList);
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+});
+
 app.get("/task/:id", async (req: Request, res: Response): Promise<void> => {
   const taskId: number = Number(req.params.id);
   try {
@@ -142,6 +114,73 @@ app.get("/task/:id", async (req: Request, res: Response): Promise<void> => {
     result[0].limit_date = formattedDate;
 
     res.status(200).send(result);
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+});
+
+app.get("/task", async (req: Request, res: Response): Promise<void> => {
+  const creatorUserId: number = Number(req.query.creatorUserId);
+  try {
+    const result = await connection("Tasks")
+      .innerJoin("Users", "Tasks.user_id", "Users.id")
+      .select("Tasks.*", "Users.nickname")
+      .where({ "Tasks.user_id": creatorUserId });
+    if (result.length === 0) {
+      throw new Error(`O usuário ainda não criou tarefas`);
+    }
+    let formattedDate = moment(result[0].limit_date).format("DD/MM/YYYY");
+    result[0].limit_date = formattedDate;
+
+    res.status(200).send(result);
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+});
+
+
+app.get("/task", async (req: Request, res: Response): Promise<void> => {
+  const tarefa: string = req.query.tarefa as string;
+  const givenTask: string = tarefa.toLocaleLowerCase()
+  try {
+    const result = await connection("Tasks")
+      .innerJoin("Users", "Tasks.user_id", "Users.id")
+      .select("Tasks.*", "Users.nickname")
+      .whereLike("Tasks.title", `%${givenTask}%`).orWhereLike("Tasks.description", `%${givenTask}%`);
+
+    let formattedDate = moment(result[0].limit_date).format("DD/MM/YYYY");
+    result[0].limit_date = formattedDate;
+
+    res.status(200).send(result);
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+});
+
+
+app.put("/user/:id", async (req: Request, res: Response): Promise<void> => {
+  const userName: string = req.body.name;
+  const userNickName: string = req.body.nickname;
+  const userEmail: string = req.body.email;
+
+  if (userName === "") {
+    res.status(400).send("O nome não pode ficar em branco");
+  }
+  if (userNickName === "") {
+    res.status(400).send("O apelido não pode ficar em branco");
+  }
+  if (userEmail === "") {
+    res.status(400).send("O email não pode ficar em branco");
+  }
+  try {
+    await connection("Users")
+      .update({
+        name: userName,
+        nickname: userNickName,
+        email: userEmail,
+      })
+      .where({ id: req.params.id });
+    res.status(201).send({ message: "Usuário editado com sucesso" });
   } catch (error: any) {
     res.status(500).send(error.sqlMessage || error.message);
   }
