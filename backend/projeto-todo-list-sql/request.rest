@@ -9,9 +9,9 @@ POST http://localhost:3306/user
 Content-Type: application/json
 
 {
-    "name": "brena",
-    "nickname": "givanilda",
-    "email": "brendagivanilda@atletico.com"
+    "name": "Diadorim",
+    "nickname": "Diadorim",
+    "email": "diadorim@maedobags.com"
 }
 
 ### endpoint para ver usuário pelo id
@@ -28,7 +28,6 @@ Content-Type: application/json
 }
 ###
 
-
 ###
 POST http://localhost:3306/user
 Content-Type: application/json
@@ -40,7 +39,7 @@ Content-Type: application/json
 }
 
 ### endpoint para deletar usuario pelo id
-DELETE http://localhost:3306/user/6
+DELETE http://localhost:3306/user/17
 
 ### endpoint para ver a lista de tarefas
 
@@ -52,15 +51,16 @@ POST http://localhost:3306/task
 Content-Type: application/json
 
 {
-    "userId": "1",
-    "taskTitle": "Arrumar a casa",
-    "taskDescription": "Lavar as vasilhas, arrumar a cama, varrer o chão, lavar a roupa",
-    "taskLimitDate": "26/07/1993"
+    "userId": "2",
+    "taskTitle": "Estudar geriatria",
+    "taskDescription": "Estudar para as aulas de geriatria",
+    "taskLimitDate": "26/04/2022",
+    "taskStatus": "doing"
 }
 
 ###
 
-GET http://localhost:3306/task/1
+GET http://localhost:3306/task/2
 
 
 ### endpoint para deletar tarefa pelo id
