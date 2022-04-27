@@ -9,22 +9,22 @@ POST http://localhost:3306/user
 Content-Type: application/json
 
 {
-    "name": "Diadorim",
-    "nickname": "Diadorim",
-    "email": "diadorim@maedobags.com"
+    "name": "Lucas",
+    "nickname": "Txai",
+    "email": "txaifonceca@gmail.com"
 }
 
 ### endpoint para ver usuário pelo id
 
-GET http://localhost:3306/user/1
+GET http://localhost:3306/user/7e874768-60ab-4180-9e61-70c2112bb4e7
 
 ### endpoint para editar usuário pelo id
 
-PUT http://localhost:3306/user/2
+PUT http://localhost:3306/user/cb1a0112-f6ef-4190-a9cf-99612a734b58
 Content-Type: application/json
 
 {
-    "name": "Brenda"
+    "name": "Lucas Txai"
 }
 ###
 
@@ -51,7 +51,7 @@ POST http://localhost:3306/task
 Content-Type: application/json
 
 {
-    "userId": "1",
+    "userId": "cb1a0112-f6ef-4190-a9cf-99612a734b58",
     "taskTitle": "Fazer os desafios do projeto",
     "taskDescription": "Tentar resolver os desafios do projeto, porque Backend é muito bacana",
     "taskLimitDate": "26/04/2022",
@@ -60,17 +60,17 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3306/task/2
+GET http://localhost:3306/task/91f0c728-5515-4b52-947c-e880bbc2afce
 
 ###
-GET http://localhost:3306/task?creatorUserId=3
+GET http://localhost:3306/task?creatorUserId=cb1a0112-f6ef-4190-a9cf-99612a734b58
 
 
 ###
-GET http://localhost:3306/user?userName=tx
+GET http://localhost:3306/user?userName=ir
 
 ###
-GET http://localhost:3306/user?tarefa=ger
+GET http://localhost:3306/task?tarefa=ger
 
 ### endpoint para deletar tarefa pelo id
 DELETE http://localhost:3306/task/3

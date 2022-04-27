@@ -3,6 +3,7 @@ import cors from "cors";
 import { AddressInfo } from "net";
 import connection from "./connection";
 import moment from "moment";
+import { v4 as uuidv4 } from 'uuid';
 
 const app: Express = express();
 
@@ -22,10 +23,12 @@ app.post("/user", async (req: Request, res: Response): Promise<void> => {
   const userName: string = req.body.name;
   const userNickName: string = req.body.nickname;
   const userEmail: string = req.body.email;
+  const userId: string = uuidv4();
 
   if (userName.length > 2 && userNickName.length > 1 && userEmail.length > 3) {
     try {
       await connection("Users").insert({
+        id: userId,
         name: userName,
         nickname: userNickName,
         email: userEmail,
@@ -41,7 +44,8 @@ app.post("/user", async (req: Request, res: Response): Promise<void> => {
 });
 
 app.post("/task", async (req: Request, res: Response): Promise<void> => {
-  const userId: number = Number(req.body.userId);
+  const taskId: string = uuidv4();
+  const userId: string = req.body.userId;
   const taskTitle: string = req.body.taskTitle;
   const taskDescription: string = req.body.taskDescription;
   const taskLimitDate: string = req.body.taskLimitDate
@@ -57,6 +61,7 @@ app.post("/task", async (req: Request, res: Response): Promise<void> => {
   ) {
     try {
       await connection("Tasks").insert({
+        id: taskId,
         user_id: userId,
         title: taskTitle,
         description: taskDescription,
@@ -101,7 +106,7 @@ app.get("/task/all", async (req: Request, res: Response): Promise<any> => {
 });
 
 app.get("/task/:id", async (req: Request, res: Response): Promise<void> => {
-  const taskId: number = Number(req.params.id);
+  const taskId: string = req.params.id;
   try {
     const result = await connection("Tasks")
       .innerJoin("Users", "Tasks.id", "Users.id")
@@ -120,7 +125,7 @@ app.get("/task/:id", async (req: Request, res: Response): Promise<void> => {
 });
 
 app.get("/task", async (req: Request, res: Response): Promise<void> => {
-  const creatorUserId: number = Number(req.query.creatorUserId);
+  const creatorUserId: string = req.query.creatorUserId as string;
   try {
     const result = await connection("Tasks")
       .innerJoin("Users", "Tasks.user_id", "Users.id")
@@ -138,15 +143,15 @@ app.get("/task", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-
-app.get("/task", async (req: Request, res: Response): Promise<void> => {
-  const tarefa: string = req.query.tarefa as string;
-  const givenTask: string = tarefa.toLocaleLowerCase()
+app.get("/user", async (req: Request, res: Response): Promise<void> => {
+  const userName: string = req.query.user as string;
+  const givenUser: string = userName
+  // .toLocaleLowerCase()
   try {
-    const result = await connection("Tasks")
+    const result = await connection("Users")
       .innerJoin("Users", "Tasks.user_id", "Users.id")
       .select("Tasks.*", "Users.nickname")
-      .whereLike("Tasks.title", `%${givenTask}%`).orWhereLike("Tasks.description", `%${givenTask}%`);
+      .whereLike("Users.name", `%${givenUser}%`).orWhereLike("Users.email", `%${givenUser}%`);
 
     let formattedDate = moment(result[0].limit_date).format("DD/MM/YYYY");
     result[0].limit_date = formattedDate;
