@@ -1,0 +1,26 @@
+###
+POST http://localhost:3306/users
+Content-Type: application/json
+
+{
+    "name": "Lucas",
+    "email": "lucas@txai.com",
+    "password": "lucastxai"
+}
+
+###
+
+GET  http://localhost:3306/users
+
+###
+POST http://localhost:3306/products
+Content-Type:  application/json
+
+{
+    "name": "Viagem para a Noruega ver neve",
+    "price": 5000,
+    "image": "https://picsum.photos/seed/picsum/200/300"
+}
+
+###
+GET  http://localhost:3306/products
