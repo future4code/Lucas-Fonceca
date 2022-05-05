@@ -36,7 +36,7 @@ app.post("/products", async (req: Request, res: Response): Promise<void> => {
   const productId: string = uuidv4();
   const productName: string = req.body.name;
   const productImage: string = req.body.image;
-  const productPrice: number = req.body.price
+  const productPrice: number = req.body.price;
 
   if (productName.length > 2 && productImage.length > 2 && productPrice > 0) {
     try {
@@ -44,15 +44,43 @@ app.post("/products", async (req: Request, res: Response): Promise<void> => {
         id: productId,
         name: productName,
         image_url: productImage,
-        price: productPrice
+        price: productPrice,
       });
-      res.status(201).send({message: "Produto criado com sucesso!"});
+      res.status(201).send({ message: "Produto criado com sucesso!" });
     } catch (error: any) {
       res.status(500).send(error.sqlMessage || error.message);
     }
   } else {
-    res.status(400).send("Favor conferir os dados inseridos")
+    res.status(400).send("Favor conferir os dados inseridos");
   }
+});
+
+app.post("/purchases", async (req: Request, res: Response): Promise<void> => {
+  const purchaseId: string = uuidv4();
+  const userId: string = req.body.userId;
+  const productId: string = req.body.productId;
+  const purchaseQuantity: number = req.body.quantity;
+
+  // if (!userId || !productId || !purchaseQuantity) {
+  //   res.status(400).send("Favor conferir os dados inseridos");
+  // } else {
+  try {
+    const price = await connection("labecommerce_products")
+      .select("labecommerce_products.price")
+      .where({ "labecommerce_products.id": productId }) as unknown as number;
+    const totalPrice = price * purchaseQuantity;
+    const result = await connection("labecommerce_purchases").insert({
+      id: purchaseId,
+      user_id: userId,
+      product_id: productId,
+      quantity: purchaseQuantity,
+      total_price: totalPrice,
+    });
+    res.status(200).send(result);
+  } catch (error: any) {
+    res.status(500).send(error.sqlMessage || error.message);
+  }
+  // }
 });
 
 app.get("/users", async (req: Request, res: Response): Promise<void> => {

@@ -24,3 +24,14 @@ Content-Type:  application/json
 
 ###
 GET  http://localhost:3306/products
+
+###
+POST http://localhost:3306/purchases
+Content-Type: application/json
+
+{
+    "userId": "792759a1-3f96-4ca2-9f2f-b92a51edee5a",
+    "productId": "fdc6b231-8f55-40f0-9e65-d9fa5457e056",
+    "quantity": 5
+}
+
