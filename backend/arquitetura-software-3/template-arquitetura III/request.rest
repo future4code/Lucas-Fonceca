@@ -7,4 +7,13 @@ Content-Type: application/json
     "password": "23432535"
 }
 
+###
+POST http://localhost:3003/movie/create
+Content-Type: application/json
 
+{
+    "title": "Across The Universe",
+    "description": "Provavelmente o melhor musical feito",
+    "durationInMinutes": 125,
+    "yearOfRelease": 2009
+}

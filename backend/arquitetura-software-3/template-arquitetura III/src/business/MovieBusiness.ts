@@ -5,13 +5,13 @@ import {
   InvalidTitle,
   InvalidYear,
 } from "../error/customError";
-import { Movie, MovieInputDTO } from "../model/movie";
+import { movie, MovieInputDTO } from "../model/movie";
 import { generateId } from "../services/generateId";
 
 export class MovieBusiness {
   public create = async (input: MovieInputDTO) => {
     try {
-      const { title, description, duration_in_minutes, year_of_release } =
+      const { title, description, durationInMinutes, yearOfRelease } =
         input;
 
       if (!title || title.length < 2) {
@@ -20,22 +20,22 @@ export class MovieBusiness {
       if (!description || description.length < 3) {
         throw new InvalidDescritption();
       }
-      if (!duration_in_minutes) {
+      if (!durationInMinutes) {
         throw new InvalidDuration();
       }
-      if (!year_of_release) {
+      if (!yearOfRelease) {
         throw new InvalidYear();
       }
 
       const id: string = generateId();
 
       const movieDatabase = new MovieDatabase();
-      const movie: Movie = {
+      const movie: movie = {
         description,
-        duration_in_minutes,
+        durationInMinutes,
         id,
         title,
-        year_of_release,
+        yearOfRelease,
       };
       await movieDatabase.create(movie);
     } catch (error: any) {

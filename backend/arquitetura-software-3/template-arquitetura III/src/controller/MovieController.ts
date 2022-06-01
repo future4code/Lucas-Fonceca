@@ -5,14 +5,14 @@ import { MovieInputDTO } from "../model/movie";
 export class MovieController {
   public create = async (req: Request, res: Response) => {
     try {
-      const { title, description, duration_in_minutes, year_of_release } =
+      const { title, description, durationInMinutes, yearOfRelease } =
         req.body;
 
       const input: MovieInputDTO = {
         title,
         description,
-        duration_in_minutes,
-        year_of_release,
+        durationInMinutes,
+        yearOfRelease,
       };
 
       const movieBusiness = new MovieBusiness();
