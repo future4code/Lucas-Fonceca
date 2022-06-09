@@ -1,5 +1,6 @@
+import { authenticationData } from "../model/authenticationId";
 import { post } from "../model/post";
-import { BaseDatabase } from "./BaseDataBase";
+import { BaseDatabase } from "./BaseDatabase";
 
 export class PostDatabase extends BaseDatabase {
   private static TABLE_NAME = "labook_posts";
@@ -19,4 +20,11 @@ export class PostDatabase extends BaseDatabase {
       authorId: post.authorId,
     };
   };
+
+  async queryPost(authId: authenticationData): Promise<void> {
+    
+    await BaseDatabase.connection(PostDatabase.TABLE_NAME)
+      .select("*")
+      .where("id", authId);
+  }
 }
