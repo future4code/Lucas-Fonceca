@@ -1,6 +1,8 @@
 import { RecipesDatabase } from "../data/RecipesDatabase";
 import { recipe, RecipeInputDTO } from "../model/recipe";
-import { generateId } from "../services/generateId";
+import { IdGenerator } from "../services/generateId";
+
+const idGenerator = new IdGenerator()
 
 export class RecipeBusiness {
   public create = async (input: RecipeInputDTO) => {
@@ -10,7 +12,7 @@ export class RecipeBusiness {
       // if (!title || !description ) {
       //     throw new InvalidTitle
       // }
-      const id: string = generateId();
+      const id: string = idGenerator.generateId();
       const creationDate: string = new Date().toISOString().split("T")[0];
       const recipeDatabase = new RecipesDatabase();
       const recipe: recipe = {
