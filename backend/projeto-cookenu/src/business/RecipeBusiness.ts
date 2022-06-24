@@ -11,13 +11,13 @@ export class RecipeBusiness {
       //     throw new InvalidTitle
       // }
       const id: string = generateId();
-      const creationDate: number = Date.now();
+      const creationDate: string = new Date().toISOString().split("T")[0];
       const recipeDatabase = new RecipesDatabase();
       const recipe: recipe = {
         id,
         title,
         description,
-        creationDate
+        creationDate,
       };
       await recipeDatabase.create(recipe);
     } catch (error: any) {
@@ -25,5 +25,10 @@ export class RecipeBusiness {
     }
   };
 
+  async getAllRecipes(): Promise<recipe[]> {
+    const recipeDatabase = new RecipesDatabase();
 
+    const result = await recipeDatabase.getAllRecipes();
+    return result;
+  }
 }

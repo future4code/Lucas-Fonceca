@@ -19,9 +19,10 @@ export class RecipesDatabase extends BaseDatabase {
     };
   };
 
-  async queryRecipe(authId: authenticationData): Promise<void> {
-    await BaseDatabase.connection(RecipesDatabase.TABLE_NAME)
-      .select("*")
-      .where("id", authId);
+  async getAllRecipes(): Promise<recipe[]> {
+    const recipeDatabase = new RecipesDatabase();
+
+    const result = await recipeDatabase.getAllRecipes();
+    return result;
   }
 }
