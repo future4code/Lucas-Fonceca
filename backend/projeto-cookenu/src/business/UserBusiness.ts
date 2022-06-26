@@ -1,5 +1,11 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { UserInputDTO, LoginInputDTO, user } from "../model/user";
+import {
+  UserInputDTO,
+  LoginInputDTO,
+  user,
+  GetUserProfileDTO,
+  UserProfileOutputDTO,
+} from "../model/user";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/generateId";
 import { TokenGenerator } from "../services/TokenGenerator";
@@ -9,6 +15,7 @@ import {
   InvalidPassword,
   UserNotFound,
 } from "../error/customError";
+import { Authenticator } from "../services/Authenticator";
 
 const tokenGenerator = new TokenGenerator();
 const userDatabase = new UserDatabase();
@@ -75,7 +82,7 @@ export class UserBusiness {
         throw new InvalidPassword();
       }
 
-      const user = await userDatabase.findUser(email);
+      const user = await userDatabase.findUserByEmail(email);
 
       if (!user) {
         throw new UserNotFound();
@@ -93,6 +100,15 @@ export class UserBusiness {
       const token = tokenGenerator.generateToken(user.id);
 
       return token;
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
+  };
+
+  public getUser = async (token: string): Promise<any[]> => {
+    try {
+      const authenticationData = tokenGenerator.tokenData(token);
+      return userDatabase.findUser(authenticationData.id);
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }

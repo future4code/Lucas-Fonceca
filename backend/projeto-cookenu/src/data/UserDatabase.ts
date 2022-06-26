@@ -1,19 +1,30 @@
+import { CustomError } from "../error/customError";
 import { authenticationData } from "../model/authenticationId";
 import { user } from "../model/user";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
-  public findUser = async (email: string) => {
+  public findUser = async (id: string) => {
+    try {
+      const result = await UserDatabase.connection("users_cookenu")
+        .select("id", "name", "email")
+        .where({ id });
+      return result;
+    } catch (error: any) {
+      throw new CustomError(404, error.message);
+    }
+  };
+
+  public findUserByEmail = async (email: string) => {
     try {
       const result = await UserDatabase.connection("users_cookenu")
         .select()
         .where({ email });
       return result[0];
     } catch (error: any) {
-      // throw new
+      throw new CustomError(404, error.message);
     }
   };
-
   public insertUser = async (user: user) => {
     try {
       await UserDatabase.connection
@@ -27,25 +38,5 @@ export class UserDatabase extends BaseDatabase {
     } catch (error) {}
   };
 
-  // private static TABLE_NAME = "users_cookenu";
-
-  // async create(user: user): Promise<void> {
-  //   await BaseDatabase.connection(UserDatabase.TABLE_NAME).insert(
-  //     this.toModelUser(user)
-  //   );
-  // }
-  // private toModelUser = (user: user): any => {
-  //   return {
-  //     id: user.id,
-  //     name: user.name,
-  //     email: user.email,
-  //     password: user.password,
-  //   };
-  // };
-
-  // async queryUser(authId: authenticationData): Promise<void> {
-  //   await BaseDatabase.connection(UserDatabase.TABLE_NAME)
-  //     .select("*")
-  //     .where("id", authId);
-  // }
+  // private static TABLE_NAME = "users_cookenu
 }
