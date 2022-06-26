@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
-import { authenticationData } from "../model/authenticationId";
-import { GetUserProfileDTO, LoginInputDTO, UserInputDTO } from "../model/user";
+import { LoginInputDTO, UserInputDTO } from "../model/user";
 
 export class UserController {
   public signup = async (req: Request, res: Response) => {
@@ -38,7 +37,7 @@ export class UserController {
     }
   };
 
-  public queryUser = async (req: Request, res: Response) => {
+  public userprofile = async (req: Request, res: Response) => {
     try {
       const userBusiness = new UserBusiness();
 
@@ -46,6 +45,22 @@ export class UserController {
 
       const user = await userBusiness.getUser(token);
 
+      res.status(200).send(user);
+    } catch (error: any) {
+      res.status(400).send({
+        message: error.message,
+      });
+    }
+  };
+
+  public friendprofile = async (req: Request, res: Response) => {
+    try {
+      const token = req.headers.authorization as string;
+      const userBusiness = new UserBusiness();
+
+      const id = req.params.id;
+
+      const user = await userBusiness.getFriend(token, id);
       res.status(200).send(user);
     } catch (error: any) {
       res.status(400).send({

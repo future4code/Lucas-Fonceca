@@ -1,10 +1,20 @@
 import { CustomError } from "../error/customError";
-import { authenticationData } from "../model/authenticationId";
 import { user } from "../model/user";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
   public findUser = async (id: string) => {
+    try {
+      const result = await UserDatabase.connection("users_cookenu")
+        .select("id", "name", "email")
+        .where({ id });
+      return result;
+    } catch (error: any) {
+      throw new CustomError(404, error.message);
+    }
+  };
+
+  public findFriend = async (id: string) => {
     try {
       const result = await UserDatabase.connection("users_cookenu")
         .select("id", "name", "email")
@@ -35,8 +45,8 @@ export class UserDatabase extends BaseDatabase {
           password: user.password,
         })
         .into("users_cookenu");
-    } catch (error) {}
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
   };
-
-  // private static TABLE_NAME = "users_cookenu
 }

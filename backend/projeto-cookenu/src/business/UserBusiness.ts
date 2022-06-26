@@ -2,9 +2,7 @@ import { UserDatabase } from "../data/UserDatabase";
 import {
   UserInputDTO,
   LoginInputDTO,
-  user,
-  GetUserProfileDTO,
-  UserProfileOutputDTO,
+  user
 } from "../model/user";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/generateId";
@@ -15,7 +13,6 @@ import {
   InvalidPassword,
   UserNotFound,
 } from "../error/customError";
-import { Authenticator } from "../services/Authenticator";
 
 const tokenGenerator = new TokenGenerator();
 const userDatabase = new UserDatabase();
@@ -109,6 +106,21 @@ export class UserBusiness {
     try {
       const authenticationData = tokenGenerator.tokenData(token);
       return userDatabase.findUser(authenticationData.id);
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
+  };
+
+  public getFriend = async (token: string, id: string): Promise<any[]> => {
+    try {
+      if (!token) {
+        throw new CustomError(
+          400,
+          "Passe o token do usuário através do header da requisição"
+        );
+      }
+      const friend = userDatabase.findUser(id);
+      return friend;
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }

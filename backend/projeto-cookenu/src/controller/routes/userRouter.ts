@@ -6,4 +6,5 @@ const userController = new UserController();
 
 userRouter.post("/signup", userController.signup);
 userRouter.post("/login", userController.login);
-userRouter.get("/profile", userController.queryUser)
+userRouter.get("/profile", userController.userprofile);
+userRouter.get("/:id", userController.friendprofile);

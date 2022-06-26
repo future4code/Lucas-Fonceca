@@ -5,6 +5,12 @@ export type user = {
   password: string;
 };
 
+export type friend = {
+  id: string;
+  name: string;
+  email: string;
+};
+
 export interface UserInputDTO {
   name: string;
   email: string;
