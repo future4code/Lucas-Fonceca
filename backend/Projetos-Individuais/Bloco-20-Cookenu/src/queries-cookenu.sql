@@ -14,4 +14,6 @@ CREATE TABLE recipes_cookenu(
     creation_date DATE NOT NULL
 );
 
+SELECT * FROM recipes_cookenu;
+
 DROP TABLE recipes_cookenu;
